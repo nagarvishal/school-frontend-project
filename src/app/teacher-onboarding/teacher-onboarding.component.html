@@ -1,0 +1,285 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<br>
+<div class="container" *ngIf="step==0">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Add Teacher Details</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="form" (ngSubmit)="addTeacher()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.first_name.value?true:false">First Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="First Name" name="first_name"
+                                    formControlName="first_name">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.first_name?.touched && teacher.first_name?.invalid">
+                                    <div *ngIf="teacher.first_name?.errors.required">*First Name Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.last_name.value?true:false">Last Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Last Name" name="last_name" formControlName="last_name">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.last_name?.touched && teacher.last_name?.invalid">
+                                    <div *ngIf="teacher.last_name?.errors.required">*Last Name Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.email.value?true:false">Email</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Email" name="email" formControlName="email">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.email?.touched && teacher.email?.invalid">
+                                    <div *ngIf="teacher.email?.errors.required">*Email Is Required</div>
+                                    <div *ngIf="teacher.email?.errors.pattern">*Email Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.father_name.value?true:false">Father Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Father Name" name="father_name"
+                                    formControlName="father_name">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.father_name?.touched && teacher.efather_name?.invalid">
+                                    <div *ngIf="teacher.father_name?.errors.required">*Father Name Is Required</div>
+                                    <div *ngIf="teacher.father_name?.errors.pattern">*Father Name Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.mother_name.value?true:false">Mother Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Mother Name" name="mother_name"
+                                    formControlName="mother_name">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.mother_name?.touched && teacher.mother_name?.invalid">
+                                    <div *ngIf="teacher.mother_name?.errors.required">*Mother Name Is Required</div>
+                                    <div *ngIf="teacher.mother_name?.errors.pattern">*Mother Name Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.adhar_number.value?true:false">Adhar Number</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Adhar Number" name="adhar_number"
+                                    formControlName="adhar_number">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.adhar_number?.touched && teacher.adhar_number?.invalid">
+                                    <div *ngIf="teacher.adhar_number?.errors.required">*Adhar Is Required</div>
+                                    <div *ngIf="teacher.adhar_number?.errors.pattern">*Adhar Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label>Select Role</label>
+                                <br>
+                                <select id="country" formControlName="role">
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                                <div class="alert alert-danger"
+                                    *ngIf="(teacher.role?.touched || is_clicked )&& teacher.role?.invalid">
+                                    <div *ngIf="teacher.role?.errors.required">*Role Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label>Date Of Birth</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="date" placeholder="Date Of Birth" name="date_of_birth"
+                                    formControlName="date_of_birth">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.date_of_birth?.touched && teacher.date_of_birth?.invalid">
+                                    <div *ngIf="teacher.date_of_birth?.errors.required">*Date Of Birth Is Required</div>
+                                    <div *ngIf="teacher.date_of_birth?.errors.pattern">*Date of Birth Pattern is Wrong
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label>Select Gender</label>
+                                <br>
+                                <select formControlName="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="alert alert-danger"
+                                    *ngIf="(teacher.gender?.touched || is_clicked )&& teacher.gender?.invalid">
+                                    <div *ngIf="teacher.gender?.errors.required">*Gender Is Required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.mobile_no.value?true:false">Mobile No.</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Mobile No." name="mobile_no"
+                                    formControlName="mobile_no">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.mobile_no?.touched && teacher.mobile_no?.invalid">
+                                    <div *ngIf="teacher.mobile_no?.errors.required">*Mobile No. Is Required</div>
+                                    <div *ngIf="teacher.mobile_no?.errors.pattern">*Mobile No. Pattern is Wrong</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label>Enrollment Date</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="date" placeholder="Enrollment Date" name="enrollment_date"
+                                    formControlName="enrollment_date">
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.enrollment_date?.touched && teacher.enrollment_date?.invalid">
+                                    <div *ngIf="teacher.enrollment_date?.errors.required">*Enrollment Date Is Required
+                                    </div>
+                                    <div *ngIf="teacher.enrollment_date?.errors.pattern">*Enrollment Date Pattern is
+                                        Wrong</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label>Status</label>
+                                <br>
+                                <select formControlName="gender">
+                                    <option value=0 [selected]="true">Active</option>
+                                    <option value=1>Disable</option>
+                                </select>
+                                <div class="alert alert-danger"
+                                    *ngIf="(teacher.status?.touched || is_clicked )&& teacher.status?.invalid">
+                                    <div *ngIf="teacher.status?.errors.required">*Status Is Required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.account_no.value?true:false">Account Number</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Account Number" name="account_no" formControlName="account_no">
+                                <div class="alert alert-danger" *ngIf="teacher.account_no?.touched && teacher.account_no?.invalid">
+                                    <div *ngIf="teacher.account_no?.errors.required">*Account Number Is Required</div>
+                                    <div *ngIf="teacher.account_no?.errors.pattern">*Account Number Pattern is Wrong</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.ifsc_code.value?true:false">IFSC Code</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="IFSC Code" name="ifsc_code" formControlName="ifsc_code">
+                                <div class="alert alert-danger" *ngIf="teacher.ifsc_code?.touched && teacher.ifsc_code?.invalid">
+                                    <div *ngIf="teacher.ifsc_code?.errors.required">*IFSC Code Is Required</div>
+                                    <div *ngIf="teacher.ifsc_code?.errors.pattern">*IFSC Code Pattern is Wrong</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="margin-bottom: 20px;">
+                                <label *ngIf="teacher.address.value?true:false">Address</label>
+                                <label style="color:#ffffff">*</label>
+                                <textarea placeholder="Address" name="address" formControlName="address"></textarea>
+                                <div class="alert alert-danger"
+                                    *ngIf="teacher.address?.touched && teacher.address?.invalid">
+                                    <div *ngIf="teacher.address?.errors.required">*Address Is Required</div>
+                                    <div *ngIf="teacher.address?.errors.pattern">*Address Pattern is Wrong</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="prevStep()"
+                            *ngIf="step!=0">Prev</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;">Submit</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="nextStep()"
+                            *ngIf="step==0">Next</button>
+                        <br>
+                        <p></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step==1">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Add Teacher Required Documents</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="form" (ngSubmit)="addTeacher()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Adhar Card</label>
+                                <!-- <label style="color:#ffffff">*</label> -->
+                                <label class="label">
+                                    <input type="file" placeholder="Adhar Card" name="adhar_card" (change)="onChangeFile($event,span1)"/>
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span1>Choose File</span> - Upload Adhar Card</span>
+                                    <script></script>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Pan Card</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Pan Card" name="pan_card" (change)="onChangeFile($event,span2)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span2>Choose File</span> - Upload Pan Card</span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Bachelor's Degree</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Bachelor's Degree" name="bachelor_degree" (change)="onChangeFile($event,span3)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span3>Choose File</span> -Upload Bachelor's Degree </span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Resume/CV</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Resume/CV" name="resume" (change)="onChangeFile($event,span4)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span4>Choose File</span> -Upload Resume/CV </span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Photocopy</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Photocopy" name="photocopy" (change)="onChangeFile($event,span5)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span5>Choose File</span> -Upload Photocopy
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Birth Certificate</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Birth Certificate" name="birth_certificate" (change)="onChangeFile($event,span6)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span6>Choose File</span> -Upload Birth Certificate
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Police Clearance Certificate</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Police Clearance Certificate" name="pcc" (change)="onChangeFile($event,span7)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span7>Choose File</span> -Upload Police Clearance Certificate
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Bank Statements Copy</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Bank Statements Copy" name="btc" (change)="onChangeFile($event,span8)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span8>Choose File</span> -Upload Bank Statements Copy
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="prevStep()"
+                            *ngIf="step==1?true:false">Prev</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;">Submit</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="nextStep()"
+                            *ngIf="step==1?false:true">Next</button>
+                        <br>
+                        <p></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>

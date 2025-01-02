@@ -1,0 +1,114 @@
+<app-header></app-header>
+<br>
+
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-4 col-md-3 col-xl-2" style="height: fit-content;border-right: 1.5px dashed gray;margin: 10px;box-sizing: border-box;">
+            <p [ngClass]="{
+                active:index==0?true:false,
+                nonactive:index==0?false:true
+            }" (click)="changeindex(0)">General Information</p>
+            <p [ngClass]="{
+                active:index==1?true:false,
+                nonactive:index==1?false:true
+            }" (click)="changeindex(1)">Contact & Feese</p>
+            <p [ngClass]="{
+                active:index==2?true:false,
+                nonactive:index==2?false:true
+            }" (click)="changeindex(2)">Subjects</p>
+            <p [ngClass]="{
+                active:index==3?true:false,
+                nonactive:index==3?false:true
+            }" (click)="changeindex(3)">Marks</p>
+        </div>
+        <div class="col-7 col-md-8 col-xl-9" style="height: fit-content;">
+            <div [ngSwitch]="index">
+                <div *ngSwitchCase="0">
+                    <div class="row justify-content-start">
+                        <div class="col-md-4" >
+                            <label>User Id</label>
+                            <p class="userinfo">{{userdata.user_id}}</p>
+                        </div>
+                        <div class="col-md-4" >
+                            <label>First Name</label>
+                            <p class="userinfo">{{userdata.first_name}}</p>
+                        </div>
+                        <div class="col-md-4" >
+                            <label for="">Last Name</label>
+                            <p class="userinfo">{{userdata.last_name}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Email</label>
+                            <p class="userinfo">{{userdata.email}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Mobile No.</label>
+                            <p class="userinfo">{{userdata.mobile_no}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Gender</label>
+                            <p class="userinfo">{{userdata.gender}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Father Name</label>
+                            <p class="userinfo">{{userdata.father_name}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Mother Name</label>
+                            <p class="userinfo">{{userdata.mother_name}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">enrollment_date</label>
+                            <p class="userinfo">{{userdata.enrollment_date}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Date Of Birth</label>
+                            <p class="userinfo">{{userdata.date_of_birth}}</p>
+                        </div>
+                        <div class="col-md-4 " >
+                            <label for="">Role</label>
+                            <p class="userinfo">{{userdata.role}}</p>
+                        </div>        
+                    </div>
+                </div>
+                <div *ngSwitchCase="1">
+                    <div class="row justify-content-start">
+                        <div class="col-md-6" >
+                            <label>Address</label>
+                            <p class="userinfo">{{userdata.address}}</p>
+                        </div>
+                        <div class="col-md-4" >
+                            <label>Total Fees Paid</label>
+                            <p class="userinfo">5000 Rs</p>
+                        </div>
+                        <div class="col-md-4" >
+                            <label>Total Fees Remain</label>
+                            <p class="userinfo">15000 Rs</p>
+                        </div>
+                   </div>
+                </div>
+                <div *ngSwitchCase="2">
+                    <div class="row justify-content-start">
+                        <div class="col-md-4" >
+                            <label>Stream</label>
+                            <p class="userinfo">{{userdata.data.stream}}</p>
+                        </div>
+                        <div class="col-md-4"  *ngFor="let subject of userdata.data.subjects;let i=index">
+                            <label>Subject {{i+1}}</label>
+                            <p class="userinfo">{{subject}}</p>
+                        </div>
+                   </div>
+                </div>
+                <div *ngSwitchCase="3"></div>
+                <div *ngSwitchDefault></div>
+           </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<app-footer></app-footer>
+
+
+
+

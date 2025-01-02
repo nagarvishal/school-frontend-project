@@ -1,0 +1,79 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<div class="container" style="    max-width: 100%;">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <br><br>
+            <p class="p-heading">All Our Services Under One Roof</p>
+            <div class="box-container">
+                <div class="boxcontent" [routerLink]="'/student-onboarding'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-bank2 fs-1" style="color: #264a9f;"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Student Onboarding</p>
+                </div>
+                <div class="boxcontent" [routerLink]="'/teacher-onboarding'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-bank fs-1" style="color:#264a9f"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Teacher Onbaording</p>
+                </div>
+                <div class="boxcontent" [routerLink]="'/marks'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-calculator-fill fs-1" style="color:#264a9f"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Marks Updations</p>
+                </div>
+                <div class="boxcontent" [routerLink]="'/attendance'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-calendar3 fs-1" style="color: #264a9f;"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Attendance Managemnt</p>
+                </div>
+                <div class="boxcontent" [routerLink]="'/timetable'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-alarm fs-1" style="color:#264a9f"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Time Table</p>
+                </div>
+                <div class="boxcontent" [routerLink]="'/studay-material'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-journal-bookmark-fill fs-1" style="color: #264a9f;"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Online Study Meterial</p>
+                </div>
+                <div class="boxcontent" [routerLink]="'/communication'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-journal-bookmark-fill fs-1" style="color: #264a9f;"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Comunication</p>
+                </div>
+
+                <div class="boxcontent" [routerLink]="'/exam-cariculam'">
+                    <div>
+                        <div class="i-container">
+                            <i class="bi bi-journal-bookmark-fill fs-1" style="color: #264a9f;"></i>
+                        </div>
+                    </div>
+                    <p style="margin-top: 10px;color: #264a9f;">Exam Cariculam</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,297 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<br>
+<div class="container" *ngIf="step==0">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Add Student Details</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="form" (ngSubmit)="addStudent()">
+                        <div class="row justify-content-start">
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.first_name.value?true:false">First Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="First Name" name="first_name" formControlName="first_name">
+                                <div class="alert alert-danger"
+                                    *ngIf="student.first_name?.touched && student.first_name?.invalid">
+                                    <div *ngIf="student.first_name?.errors.required">*First Name Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.last_name.value?true:false">Last Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Last Name" name="last_name" formControlName="last_name">
+                                <div class="alert alert-danger" *ngIf="student.last_name?.touched && student.last_name?.invalid">
+                                    <div *ngIf="student.last_name?.errors.required">*Last Name Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.email.value?true:false">Email</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Email" name="email" formControlName="email">
+                                <div class="alert alert-danger" *ngIf="student.email?.touched && student.email?.invalid">
+                                    <div *ngIf="student.email?.errors.required">*Email Is Required</div>
+                                    <div *ngIf="student.email?.errors.pattern">*Email Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.mobile_no.value?true:false">Mobile No</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Mobile No" name="mobile_no" formControlName="mobile_no">
+                                <div class="alert alert-danger" *ngIf="student.mobile_no?.touched && student.mobile_no?.invalid">
+                                    <div *ngIf="student.mobile_no?.errors.required">*Mobile No Is Required</div>
+                                    <div *ngIf="student.mobile_no?.errors.pattern">*Mobile No Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.father_name.value?true:false">Father Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Father Name" name="father_name" formControlName="father_name">
+                                <div class="alert alert-danger" *ngIf="student.father_name?.touched && student.efather_name?.invalid">
+                                    <div *ngIf="student.father_name?.errors.required">*Father Name Is Required</div>
+                                    <div *ngIf="student.father_name?.errors.pattern">*Father Name Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.mother_name.value?true:false">Mother Name</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Mother Name" name="mother_name" formControlName="mother_name">
+                                <div class="alert alert-danger" *ngIf="student.mother_name?.touched && student.mother_name?.invalid">
+                                    <div *ngIf="student.mother_name?.errors.required">*Mother Name Is Required</div>
+                                    <div *ngIf="student.mother_name?.errors.pattern">*Mother Name Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label *ngIf="student.adhar_number.value?true:false">Adhar Number</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Adhar Number" name="adhar_number" formControlName="adhar_number">
+                                <div class="alert alert-danger" *ngIf="student.adhar_number?.touched && student.adhar_number?.invalid">
+                                    <div *ngIf="student.adhar_number?.errors.required">*Adhar Is Required</div>
+                                    <div *ngIf="student.adhar_number?.errors.pattern">*Adhar Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label>Select Role</label>
+                                <br>
+                                <select id="country" formControlName="role">
+                                    <option value="Student">Student</option>
+                                    <option value="Teacher">Teacher</option>
+                                    <option value="Admin">Admin</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(student.role?.touched || is_clicked )&& student.role?.invalid">
+                                    <div *ngIf="student.role?.errors.required">*Role Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label>Date Of Birth</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="date" placeholder="Date Of Birth" name="date_of_birth" formControlName="date_of_birth">
+                                <div class="alert alert-danger" *ngIf="student.date_of_birth?.touched && student.date_of_birth?.invalid">
+                                    <div *ngIf="student.date_of_birth?.errors.required">*Date Of Birth Is Required</div>
+                                    <div *ngIf="student.date_of_birth?.errors.pattern">*Date of Birth Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label>Select Gender</label>
+                                <br>
+                                <select formControlName="gender">
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(student.gender?.touched || is_clicked )&& student.gender?.invalid">
+                                    <div *ngIf="student.gender?.errors.required">*Gender Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label>Enrollment Date</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="date" placeholder="Enrollment Date" name="enrollment_date" formControlName="enrollment_date">
+                                <div class="alert alert-danger" *ngIf="student.enrollment_date?.touched && student.enrollment_date?.invalid">
+                                    <div *ngIf="student.enrollment_date?.errors.required">*Enrollment Date Is Required</div>
+                                    <div *ngIf="student.enrollment_date?.errors.pattern">*Enrollment Date Pattern is Wrong</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label>Status</label>
+                                <br>
+                                <select formControlName="status">
+                                    <option value=0 [selected]="true">Active</option>
+                                    <option value=1>Disable</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(student.status?.touched || is_clicked )&& student.status?.invalid">
+                                    <div *ngIf="student.status?.errors.required">*Status Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label>Select Class</label>
+                                <br>
+                                <select formControlName="class">
+                                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12];let index=index" value={{i}}>{{i}}st</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(student.class?.touched || is_clicked )&& student.class?.invalid">
+                                    <div *ngIf="student.class?.errors.required">*Class Is Required</div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                                <label for="">Select Section</label>
+                                <br>
+                                <select name="" id="" formControlName="section">
+                                    <option value="A" selected>A</option>
+                                    <option value="B">B</option>
+                                    <option value="C">C</option>
+                                </select>
+                            </div>
+                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;" *ngIf="student.class.value==12 || student.class.value==11">
+                                <label>Select Stream</label>
+                                <br>
+                                <select formControlName="stream">
+                                    <option  value="science">Science</option>
+                                    <option  value="arts">Arts</option>
+                                    <option  value="commers">Commers</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(student.stream?.touched || is_clicked )&& student.stream?.invalid">
+                                    <div *ngIf="student.stream?.errors.required">*Stream Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6" style="margin-bottom: 20px;" *ngIf="student.class.value==12 || student.class.value==11">
+                                <label>Select Subjects</label>
+                                <br>
+                                <select #subjectselect (change)="changeSubject(subjectselect)">
+                                    <option value="" disabled selected>-select-subject-</option>
+                                    <option value="Biology">Biology</option>
+                                    <option value="Chemistry">Chemistry</option>
+                                    <option value="Economics">Economics</option>
+                                    <option value="Mathematics">Mathematics</option>
+                                    <option value="Political Science">Political Science</option>
+                                    <option value="Geography">Geography</option>
+                                    <option value="Home Science">Home Science</option>
+                                    <option value="Physics">Physics</option>
+                                    <option value="Psychology">Psychology</option>
+                                    <option value="Sociology">Sociology</option>
+                                    <option value="Accountancy">Accountancy</option>
+                                    <option value="History">History</option>
+                                    <option value="Sanskrit Literature">Sanskrit Literature</option>
+                                    <option value="Public Administration">Public Administration</option>
+                                    <option value="Hindi Compulsory">Hindi Compulsory</option>
+                                    <option value="English Compulsory">English Compulsory</option>
+                                    <option value="English Literature">English Literature</option>
+                                    <option value="Hindi Literature">Hindi Literature</option>
+                                    <option value="History">History</option>
+                                </select>
+                                <a class="a_subject" *ngFor="let subject of student.subjects?.controls;let index=index">{{subject.value}} <span (click)="removeSubject(index)">X</span></a>
+                                <div class="alert alert-danger" *ngIf="(student.subjects?.touched || is_clicked )&& student.subjects?.invalid">
+                                    <div *ngIf="student.subjects?.errors.required">*Stream Is Required</div>
+                                </div>
+                            </div>
+                            
+
+                            <div class="col-md-6" style="margin-bottom: 20px;">
+                                <label *ngIf="student.address.value?true:false">Address</label>
+                                <label style="color:#ffffff">*</label>
+                                <textarea placeholder="Address" name="address" formControlName="address" rows="4"></textarea>
+                                <div class="alert alert-danger" *ngIf="student.address?.touched && student.address?.invalid">
+                                    <div *ngIf="student.address?.errors.required">*Address Is Required</div>
+                                    <div *ngIf="student.address?.errors.pattern">*Address Pattern is Wrong</div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="prevStep()" *ngIf="step!=0">Prev</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;">Submit</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="nextStep()" *ngIf="step==0">Next</button>
+                        <br>
+                        <p></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container" *ngIf="step==1">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Add Student Details</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="form" (ngSubmit)="addStudent()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Adhar Card</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Adhar Card" name="adhar_card" (change)="onChangeFile($event,span1)" />
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span1>Choose File</span> - Upload Adhar
+                                        Card</span>
+                                    <script></script>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Pan Card</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Pan Card" name="pan_card" (change)="onChangeFile($event,span2)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span2>Choose File</span> - Upload Pan
+                                        Card</span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Transfer Certificate</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Transfer Certificate" name="pan_card" (change)="onChangeFile($event,span3)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span3>Choose File</span> - Upload Transfer Certificate</span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Upload Photocopy</label>
+                            <label class="label">
+                                <input type="file" placeholder="Photocopy" name="photocopy" (change)="onChangeFile($event,span4)">
+                                <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span4>Choose File</span> -Upload
+                                    Photocopy
+                                </span>
+                            </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Birth Certificate</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Birth Certificate" name="birth_certificate" (change)="onChangeFile($event,span5)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span5>Choose File</span> -Upload Birth
+                                        Certificate
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;">
+                                <label>Last Year Marksheet/ Report Card</label>
+                                <label class="label">
+                                    <input type="file" placeholder="Marksheet/ Report Card" name="marksheet" (change)="onChangeFile($event,span6)">
+                                    <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span6>Choose File</span> -Upload Marksheet/ Report Card
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="prevStep()" *ngIf="step==1?true:false">Prev</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;">Submit</button>
+                        <button class="ibtn groupEdit" style="margin-right: 10px;" (click)="nextStep()" *ngIf="step==1?false:true">Next</button>
+                        <br>
+                        <p></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>

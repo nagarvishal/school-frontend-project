@@ -1,0 +1,39 @@
+.activeclass{
+        background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+        font-style: normal;
+        padding: 10px;
+        border: 1px solid rgb(206, 206, 206);
+        color: rgba(7, 30, 84, .6);
+
+        
+}
+
+.textcontent{
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    font-style: normal;
+    padding: 20px;
+    border: 1px solid rgb(206, 206, 206);
+    color: rgba(7, 30, 84, .6);
+}
+
+.special-table-container {
+    overflow-x: scroll;
+}
+
+.table-container {
+    overflow-x: scroll;
+    /* Enable horizontal scrolling */
+    white-space: nowrap;
+    /* Prevent content wrapping */
+}
+table{
+    border: 1px solid rgb(206, 206, 206);
+    font-size: 13px;
+}
+th,th,td{
+    margin: 12px;
+    padding: 12px;
+    border: 1px solid rgb(206, 206, 206);
+}

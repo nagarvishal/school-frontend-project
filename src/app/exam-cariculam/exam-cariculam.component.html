@@ -1,0 +1,301 @@
+<app-header></app-header>
+<br>
+
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-4 col-md-3 col-xl-2" style="height: fit-content;border-right: 1.5px dashed gray;margin: 10px;box-sizing: border-box;">
+            <p [ngClass]="{
+                active:index==0?true:false,
+                nonactive:index==0?false:true
+            }" (click)="changeindex(0)">Manage Subject</p>
+            <p [ngClass]="{
+                active:index==1?true:false,
+                nonactive:index==1?false:true
+            }" (click)="changeindex(1)">Manages Exams</p>
+            <p [ngClass]="{
+                active:index==2?true:false,
+                nonactive:index==2?false:true
+            }" (click)="changeindex(2)">Curriculum</p>
+        </div>
+        <div class="col-7 col-md-8 col-xl-9" style="height: fit-content;">
+            <div [ngSwitch]="index">
+                <div *ngSwitchCase="0">
+                    <p style="font-weight: 500;color: #264a9f;">Add Subject</p>
+                    <br>
+                    <form  [formGroup]="sform" (ngSubmit)="addSubject()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4" style="margin-bottom: 20px" style="position: relative;">
+                                <label *ngIf="subject.subject.value?true:false">Subject</label>
+                                <input type="text" placeholder="subject name" formControlName="subject">
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px">
+                                <button class="ibtn" >Add Subject</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <p style="font-weight: 500;color: #264a9f;">Delete Subject</p>
+                    <br>
+                    <form  [formGroup]="sform" (ngSubmit)="deleteSubject()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4" style="margin-bottom: 20px" style="position: relative;">
+                                <label>Subject</label>
+                                <select name="" id="" formControlName="subject">
+                                    <option value="" selected disabled>-select-subject</option>
+                                    <option *ngFor="let sub of subjects;let index=index" value="{{sub.subject_id}}">{{sub.subject}} - {{sub.subject_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px">
+                                <button class="ibtn" >Delete Subject</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <p style="font-weight: 500;color: #264a9f;">All Subject List</p>
+                    <br>
+                    <div style="display: flex;flex-wrap: wrap;" *ngIf="view==0?true:false">
+                        <div class="userinfo" style="margin-bottom: 20px;font-size: 13px;" *ngFor="let subject of arrsubject;let index=index;">
+                            <p>Subject Id - {{subject.subject_id}}</p>
+                            <p>Subject Name - {{subject.subject}}</p>
+                            <p>Created By - {{subject.author}}</p>
+                            <p>Last Updated - {{subject.update_by}}</p>
+                        </div>
+                    </div>
+                    <!-- <div class="row justify-content-">
+                        <div class="col-md-4 userinfo" style="margin-bottom: 20px;font-size: 13px;" *ngFor="let subject of subjects;let index=index;">
+                            <p>Subject Id - {{subject.subject_id}}</p>
+                            <p>Subject Name - {{subject.subject}}</p>
+                            <p>Created By - {{subject.author}}</p>
+                            <p>Last Updated - {{subject.update_by}}</p>
+                        </div>
+                    </div> -->
+                    <div *ngIf="view==1?true:false">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SI. NO.</th>
+                                    <th>Subject Id</th>
+                                    <th>Subject Name</th>
+                                    <th>Author</th>
+                                    <th>Last Updated By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let subject of arrsubject;let index=index;">
+                                    <td>{{offset+index+1}}</td>
+                                    <td>{{subject.subject_id}}</td>
+                                    <td>{{subject.subject}}</td>
+                                    <td>{{subject.author}}</td>
+                                    <td>{{subject.update_by}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                    <button (click)="decreaseoffset()" class="ibtn" style="margin-right: 10px;">Previous</button>
+                    <button (click)="changeview()" class="ibtn" style="margin-right: 10px;">Change Grid</button>
+                    <button (click)="increaseoffset()" class="ibtn" style="margin-right: 10px;">Next</button>
+                </div>
+                <div *ngSwitchCase="1">
+                    <p style="font-weight: 500;color: #264a9f;">Add Exam</p>
+                    <br>
+                    <form  [formGroup]="eform" (ngSubmit)="addExam()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4" style="margin-bottom: 20px" style="position: relative;">
+                                <label *ngIf="exam.exam_name.value?true:false">Exam Name</label>
+                                <input type="text" placeholder="Exam Name" formControlName="exam_name">
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px" style="position: relative;">
+                                <label >Maximum Marks</label>
+                                <input type="text" placeholder="Max Marks" formControlName="max_marks">
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px">
+                                <button class="ibtn" >Add Exam</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <p style="font-weight: 500;color: #264a9f;">Delete Exam</p>
+                    <br>
+                    <form  [formGroup]="eform" (ngSubmit)="deleteExam()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4" style="margin-bottom: 20px" style="position: relative;">
+                                <label>Select Exam</label>
+                                <select name="" id="" formControlName="exam_name">
+                                    <option value="" selected disabled>-select-exam</option>
+                                    <option *ngFor="let exam of exams;let index=index" value="{{exam.exam_id}}">{{exam.exam_name}} - {{exam.exam_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px">
+                                <button class="ibtn" >Delete Exam</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- <p style="font-weight: 500;color: #264a9f;">All Exams List</p>
+                    <div class="row justify-content-start">
+                        <div class="col-md-4" style="margin-bottom: 20px" *ngFor="let exam of exams;let index=index;">
+                            <p class="userinfo"><span style="margin-left: 0px;text-align: left;">{{exam.exam_name}} - {{exam.exam_id}}</span> </p>
+                        </div>
+                    </div> -->
+
+                    <p style="font-weight: 500;color: #264a9f;">All Exam List</p>
+                    <div style="display: flex;flex-wrap: wrap;" *ngIf="view==0?true:false">
+                        <div class="userinfo" style="margin-bottom: 20px;font-size: 13px;" *ngFor="let exam of arrexam;let index=index;">
+                            <p>Exam Id - {{exam.exam_id}}</p>
+                            <p>Exam Name - {{exam.exam_name}}</p>
+                            <p>Max Marks - {{exam.max_marks}}</p>
+                            <p>Created By - {{exam.author}}</p>
+                            <p>Last Updated - {{exam.update_by}}</p>
+                        </div>
+                    </div>
+                    <div *ngIf="view==1?true:false">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>SI. NO.</th>
+                                    <th>Exam Id</th>
+                                    <th>Exam Name</th>
+                                    <th>Max Marks</th>
+                                    <th>Author</th>
+                                    <th>Last Updated By</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let exam of arrexam;let index=index;">
+                                    <td>{{offset+index+1}}</td>
+                                    <td>{{exam.exam_id}}</td>
+                                    <td>{{exam.exam_name}}</td>
+                                    <td>{{exam.max_marks}}</td>
+                                    <td>{{exam.author}}</td>
+                                    <td>{{exam.update_by}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                    </div>
+                    <button (click)="decreaseoffset()" class="ibtn" style="margin-right: 10px;">Previous</button>
+                    <button (click)="changeview()" class="ibtn" style="margin-right: 10px;">Change Grid</button>
+                    <button (click)="increaseoffset()" class="ibtn" style="margin-right: 10px;">Next</button>
+                </div>
+                <div *ngSwitchCase="2">
+                    <p style="font-weight: 500;color: #264a9f;">Add Curriculum</p>
+                    <br>
+                    <form  [formGroup]="esform" (ngSubmit)="addSubjectExam()">
+                        <div class="row justify-content-start">
+
+                            <div class="col-md-4" style="margin-bottom: 20px;position: relative;">
+                                <label>Select Subject</label>
+                                <select name="" id="" formControlName="subject_id" (change)="changeSubject(subjectexam.subject_id.value)">
+                                    <option value="" selected disabled>-select-subject-</option>
+                                    <option *ngFor="let sub of subjects;" [value]="sub.subject_id">{{sub.subject}} - {{sub.subject_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;position: relative;">
+                                <label>Select Exam</label>
+                                <select name="" id="" formControlName="exam_id">
+                                    <option value="" selected disabled>-select-exam-</option>
+                                    <option *ngFor="let exam of exams;" [value]="exam.exam_id">{{exam.exam_name}} - {{exam.exam_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px">
+                                <button class="ibtn" >Add Curriculum</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <!-- <div *ngIf="c_subject?true:false" class="container">
+                        <p style="font-weight: 500;color: #264a9f;">{{c_subject}} - Curriculum</p>
+                        <div class="row justify-content-start">
+                            <div class="col-md-5" style="margin-bottom: 20px;position: relative;">
+                                <div class="userinfo" *ngFor="let data of arrsubjectexam;let index=index;">
+                                    <p>Exam Id - {{data.exam_id}}</p>
+                                    <p>Exam Name - {{data.exam_name}}</p>
+                                    <p>Create By - {{data.author}}</p>
+                                    <p>Update By - {{data.update_by}}</p>
+                                </div>
+                            </div>
+                            <button (click)="decreaseoffset()" class="ibtn" style="margin-right: 10px;">Previous</button>
+                            <button (click)="changeview()" class="ibtn" style="margin-right: 10px;">Change Grid</button>
+                            <button (click)="increaseoffset()" class="ibtn" style="margin-right: 10px;">Next</button>
+                        </div>
+                    </div> -->
+
+                    <p style="font-weight: 500;color: #264a9f;">Delete Curriculum</p>
+                    <br>
+                    <form  [formGroup]="esform" (ngSubmit)="deleteSubjectExam()">
+                        <div class="row justify-content-start">
+
+                            <div class="col-md-4" style="margin-bottom: 20px;position: relative;">
+                                <label>Select Subject</label>
+                                <select name="" id="" formControlName="subject_id" (change)="changeSubject(subjectexam.subject_id.value)">
+                                    <option value="" selected disabled>-select-subject-</option>
+                                    <option *ngFor="let sub of subjects;" [value]="sub.subject_id">{{sub.subject}} - {{sub.subject_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px;position: relative;">
+                                <label>Select Exam</label>
+                                <select name="" id="" formControlName="exam_id">
+                                    <option value="" selected disabled>-select-exam-</option>
+                                    <option *ngFor="let exam of exams;" [value]="exam.exam_id">{{exam.exam_name}} - {{exam.exam_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4" style="margin-bottom: 20px">
+                                <button class="ibtn" >Add Curriculum</button>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div *ngIf="c_subject?true:false">
+                        <p style="font-weight: 500;color: #264a9f;">{{c_subject}} Exams List</p>
+                        <br>
+                        <div style="display: flex;flex-wrap: wrap;" *ngIf="view==0?true:false">
+                            <div class="userinfo" style="margin-bottom: 20px;font-size: 13px;" *ngFor="let data of a_arrsubjectexam;let index=index;">
+                                <p>Exam Id - {{data.exam_id}}</p>
+                                <p>Exam Name - {{data.exam_name}}</p>
+                                <p>Create By - {{data.author}}</p>
+                                <p>Update By - {{data.update_by}}</p>
+                            </div>
+                        </div>
+
+                        <div *ngIf="view==1?true:false">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th style="min-width:40px;">SI. NO.</th>
+                                        <th style="min-width:150px;">Cariculam Id</th>
+                                        <th style="min-width:150px;">Subject Id</th>
+                                        <th style="min-width:100px;">Subject Name</th>
+                                        <th style="min-width:150px;">Exam Id</th>
+                                        <th style="min-width:150px;">Exam Name</th>
+                                        <th style="min-width:200px;">Author</th>
+                                        <th style="min-width:200px;">Last Updated By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of a_arrsubjectexam;let index=index;">
+                                        <td>{{offset+index+1}}</td>
+                                        <td>{{data.subject_exam_id}}</td>
+                                        <td>{{data.subject_id}}</td>
+                                        <td>{{data.subject}}</td>
+                                        <td>{{data.exam_id}}</td>
+                                        <td>{{data.exam_name}}</td>
+                                        <td>{{data.author}}</td>
+                                        <td>{{data.update_by}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <br>
+                        </div>
+                        <button (click)="decreaseoffset()" class="ibtn" style="margin-right: 10px;">Previous</button>
+                        <button (click)="changeview()" class="ibtn" style="margin-right: 10px;">Change Grid</button>
+                        <button (click)="increaseoffset()" class="ibtn" style="margin-right: 10px;">Next</button>
+                        </div>
+                    <!--  -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>

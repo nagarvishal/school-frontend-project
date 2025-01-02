@@ -1,0 +1,127 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<br>
+<div class="container" >
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <h6 class="heading-1">Add Student Marks</h6>
+            <div class="table-container">
+                <br>
+                <h6 class="heading-2">Apply Filters</h6>
+                <div class="row justify-content-start">
+                    <div class="col-5 col-sm-4 col-md-3 " style="margin-bottom: 20px;padding-top:10px">
+                        <label for="">Select Class</label>
+                        <select name="" id="" [(ngModel)]="cclass" (change)="changeClassSubject()">
+                            <option value="" selected disabled>-select-class-</option>
+                            <option *ngFor="let c of carray" [value]="c">{{c}}-st</option>
+                        </select>
+                    </div>
+
+                    <div class="col-5 col-sm-4 col-md-3 " style="margin-bottom: 20px;padding-top:10px">
+                        <label for="">Select Subject</label>
+                        <select name="" id="" [(ngModel)]="csubject_id" (change)="changeClassSubject()">
+                            <option value="" selected disabled>-select-subject-</option>
+                            <option *ngFor="let s of subjects" [value]="s.subject_id">{{s.subject}}</option>
+                        </select>
+                    </div>
+                    <div class="col-5 col-sm-4 col-md-3 " style="margin-bottom: 20px;padding-top:10px">
+                        <label for="">Select Exams</label>
+                        <select name="" id="" [(ngModel)]="cexam_id" (change)="changeExam()">
+                            <option value="" selected disabled>-select-exam-</option>
+                            <option *ngFor="let e of exams" [value]="e.exam_id">{{e.exam_name}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <br>
+                <div *ngIf="this.cclass && this.cexam_id && this.csubject_id">
+                    <h6 class="heading-2">Manages Students Marks</h6>
+                    <div class="row justify-content-between">
+                        <div class="col-2">
+                            <select type="number" name="" id="" [(ngModel)]="limit" (change)="changeLimit()">
+                                <option value=5>5</option>
+                                <option value=10>10</option>
+                                <option value=20>20</option>
+                                <option value=50>50</option>
+                                <option value=100>100</option>
+                            </select>
+                        </div>
+                        <div class="col-2">
+                            <input type="text" placeholder="SEARCH" [(ngModel)]="searchstring" (ngModelChange)="changeSearch()">
+                        </div>
+                    </div>
+                    <div class="row justify-content-start">
+                        <div class="col-12">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>SI. NO.</th>
+                                        <th>Student ID</th>
+                                        <th>Student Name</th>
+                                        <th>Subject Name</th>
+                                        <th>Exam Name</th>
+                                        <th>Class</th>
+                                        <th>Manage Marks</th>
+                                        <th>Author</th>
+                                        <th>Last Updated By</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of arrStudents;let index=index;">
+                                        <td>{{this.offset+index}}</td>
+                                        <td>{{data.user_id}}</td>
+                                        <td>{{data.first_name}} {{data.last_name}}</td>
+                                        <td>{{csubject_name}}</td>
+                                        <td>{{cexam_name}}</td>
+                                        <td>{{data.class}}</td>
+                                        <td><input class="marks-input" type="number" [(ngModel)]="marks[data.user_id].marks" placeholder="Enter Marks"> <button (click)="addStudentMark(data.user_id)" class="ibtn">ADD</button></td>
+                                        <td>{{marks[data.user_id].author?marks[data.user_id].author:"Author Not Assigned"}}</td>
+                                        <td>{{marks[data.user_id].update_by?marks[data.user_id].update_by:"Update By Not Assigned"}}</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                            
+                            <div *ngIf="numOfButton<=7; then thenBlock; else elseBlock"></div>
+                            <ng-template #thenBlock>
+                                <div class="row justify-content-between" style="margin-right:10px;margin-top: 10px;">
+                                    <div class="col-7" #parent style="background-color:#ffffff;">
+                                        <button class="nonactive">Previous</button>
+                                        <button *ngFor="let button of buttonArray;let index=index" #element (click)="navigationClick($event,element,parent)"
+                                        [ngClass]="{
+                                            'active':element.textContent==activeButton,
+                                            'nonactive':element.textContent!=activeButton
+                                        }"
+                                        >{{button}}</button>
+                                        <button class="nonactive">Next</button>
+                                    </div>
+                                    <div class="col-4" style="text-align: end;background-color:#ffffff;">Showing {{offset}} to {{offset+limit-1}} entries</div>
+                                </div>
+                            </ng-template>
+
+                            <ng-template #elseBlock>
+                                <div class="row justify-content-between" style="margin-right:10px;margin-top: 10px;">
+                                    <div class="col-7" #parent>
+                                        <button class="nonactive">Previous</button>
+                                        <button *ngFor="let button of buttonArray;let index=index" #element (click)="navigationClick($event,element,parent)"
+                                        [ngClass]="{
+                                            'active':element.textContent==activeButton && element.textContent!='.........',
+                                            'nonactive':element.textContent!=activeButton && element.textContent !='.........',
+                                            'buttonDisable':element.textContent=='.........'
+                                            }"
+                                        >{{button}}</button>
+                                        <button class="nonactive">Next</button>
+                                    </div>
+                                    <div class="col-3" style="text-align: end;">Showing {{offset}} to {{offset+limit-1}} Content</div>
+                                </div>
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

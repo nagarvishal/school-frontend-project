@@ -1,0 +1,47 @@
+<app-header></app-header>
+<br>
+<div class="container">
+    <div class="row justify-content-around">
+        <div class="col-md-5 formcontainer" >
+            <p style="color: rgba(7,30,84,.6);">Write A Email For Any Query</p>
+            <form [formGroup]="mailform" (ngSubmit)="submitform()">
+                <div class="row justify-content-start">
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Your Name">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Email">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="col-md-12">
+                        <textarea name="" id="" placeholder="Email Body" rows="10"></textarea>
+                    </div>
+                    <div><Button type="submit">Submit</Button></div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-5 contact-item">
+                    <a href="mailto:17vishalnagar2002@gmail.com" style="color: none;text-decoration: none;">
+                        <i class="bi bi-envelope-check fs-5" style="margin-right: 10px;"></i>17vishalnagar2002gmail
+                    </a>
+                </div>
+                <div class="col-md-5 contact-item">
+                    <i class="bi bi-telephone-plus fs-5" style="margin-right: 10px;"></i>Mobile - +919352052993
+                </div>
+                <div class="col-md-5 contact-item">
+                    <i class="bi bi-whatsapp fs-5" style="margin-right: 10px;"></i>Whatsupp - +919352052993
+                </div>
+                <div class="col-md-5 contact-item">
+                    <i class="bi bi-geo-alt-fill fs-5" style="margin-right: 10px;"></i>Address - 
+                    Keshavrai Patan, Dist, Bundi, Rajasthan
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>

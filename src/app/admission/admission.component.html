@@ -1,0 +1,176 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<br>
+<div class="container" style="color: rgba(7,30,84,.6);">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            <div style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+                <div (click)="changeindex(0)" [ngClass]="{
+                    activeclass:index==0?true:false
+                }">Admission & Application Procedure</div>
+                <div (click)="changeindex(1)" [ngClass]="{
+                    activeclass:index==1?true:false
+                }">Fee Structure</div>
+                <div (click)="changeindex(2)" [ngClass]="{
+                    activeclass:index==2?true:false
+                }">Withdraw Policy</div>
+            </div>
+            <div *ngIf="index==0?true:false" class="textcontent">
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">Admission & Application Procedure</p>
+                <p style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    The session commences in the month of April for all the classes, except X. Admission to the school is open to all boys
+                    and girls between the age of 4 to 16 irrespective of their religion, caste or nationality.
+                </p>
+                <br>
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">Registration</p>
+                <p style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    Registration is open for grades IV – IX for the academic session 2016-17. The registration form along with the school
+                    prospectus is available in the school office. Completed registration form along with the Non refundable registration
+                    fees should be submitted in favour of Indian Convent School, Kaishoraipatan.
+                </p>
+                <br>
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">Documents Required</p>
+                <p style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">Once the admission is confirmed you have to pay the applicable fees along with the below mentioned documents:</p>
+                <ul style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    <li>Self Attested photocopy of Marksheet/ Report Card</li>
+                    <li>Self Attested photocopy of Birth Certificate</li>
+                    <li>Original Transfer Certificate</li>
+                    <li>Photocopy of Address & Identity proof</li>
+                    <li>5 recent passport size photographs of the child</li>
+                    <li>1 passport size photograph of father and mother</li>
+                    <li>1 passport size photograph of local guardian ( if any)</li>
+                </ul>
+                <br>
+
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">Final</p>
+                <p style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    It is desirable that all admission formalities are completed well before the end of March. However, limited vacancies
+                    may exist in the middle of academic year. Information on mid year vacancies may be obtained by e-mailing the school
+                    admission office. However, it is best to apply early. All rights reserved with the school management regarding
+                    admission.
+
+                </p>
+                <br>
+            </div>
+            <div *ngIf="index==1?true:false" class="textcontent">
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">Improve the future of your child with The English/Hindi Medium School</p>
+                <p style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    OXFORD CHILD ACEDEMY SENIOR SECONDARY SCHOOL is a co-educational English Senior Secondary School,
+                    incorporating the very best of educational methods, inspired and guided by an innovative and genuinely modern
+                    educational philosophy. In Jaipur, this is the Best RBSC School for commerce, Maths, Science, which built on a vast
+                    campus, provides a pollution-free atmosphere far from the city life’s maddening crowd.
+                    <br>
+                    OXFORD CHILD ACEDEMY SENIOR SECONDARY SCHOOL is the Best RBSC School for commerce, Maths, Science,
+                    has introduced computer-aided learning in all aspects of education and learning in order to keep pace with technological
+                    advances and lead to the 21st century, to maximize the efficiency of the process. Education should spark young minds
+                    into exploring the vast horizon of knowledge, seeking answers to their questions, building dreams and pursuing goals
+                    that seek happiness for all.
+                </p>
+                <br>
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">ENGLISH MEDIUM FEES DETAILS-2024-25</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width: 50px;">CLASS</th>
+                                <th rowspan="1" colspan="1" style="width: 180px;">STARTING FEES</th>
+                                <th rowspan="1" colspan="1" style="width: 200px;">1st INSTALLMENT (SEPTEMER)</th>
+                                <th rowspan="1" colspan="1" style="width: 60px;">2nd INSTALLMENT (NOVEMBER)</th>
+                                <th rowspan="1" colspan="1" style="width: 133px;">TOTAL FEES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12th SCIENCE/AGRI</td>
+                                <td>34,800</td>
+                                <td>21,000</td>
+                                <td>12,000</td>
+                                <td>67,800</td>
+                            </tr>
+                            <tr>
+                                <td>12th COMMERCE</td>
+                                <td>34,800</td>
+                                <td>21,000</td>
+                                <td>12,000</td>
+                                <td>67,800</td>
+                            </tr>
+                            <tr>
+                                <td>12th ARTS</td>
+                                <td>24,800</td>
+                                <td>12,000</td>
+                                <td>10000</td>
+                                <td>46,800</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <br>
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">HINDI MEDIUM FEES DETAILS-2024-25</p>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th rowspan="1" colspan="1" style="width: 50px;">CLASS</th>
+                                <th rowspan="1" colspan="1" style="width: 180px;">STARTING FEES</th>
+                                <th rowspan="1" colspan="1" style="width: 200px;">1st INSTALLMENT (SEPTEMER)</th>
+                                <th rowspan="1" colspan="1" style="width: 60px;">2nd INSTALLMENT (NOVEMBER)</th>
+                                <th rowspan="1" colspan="1" style="width: 133px;">TOTAL FEES</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>12th SCIENCE/AGRI</td>
+                                <td>34,800</td>
+                                <td>21,000</td>
+                                <td>12,000</td>
+                                <td>67,800</td>
+                            </tr>
+                            <tr>
+                                <td>12th COMMERCE</td>
+                                <td>34,800</td>
+                                <td>21,000</td>
+                                <td>12,000</td>
+                                <td>67,800</td>
+                            </tr>
+                            <tr>
+                                <td>12th ARTS</td>
+                                <td>24,800</td>
+                                <td>12,000</td>
+                                <td>10000</td>
+                                <td>46,800</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div *ngIf="index==2?true:false" class="textcontent">
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">New Students</p>
+                <ul style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    <li>If a child is withdrawn before the start of the academic year, the admission fee excluding the security and joining kit
+                    shall be forfeited in favour of the school.</li>
+                    <li>If the child is withdrawn within 15 days joining , three months fee in addition to the admission fee shall be deducted
+                    and balance will be refunded.</li>
+                    <li>In case of withdrawal the refunds will be made up to 2 months. (Including Security) The security amount when refunded is
+                    interest free.</li>
+                </ul>
+                <br>
+                <p style="color: #264a9f;font-size: 16px;font-weight: 500;">Existing Students</p>
+                <ul style="color: rgba(7,30,84,.6);text-align: justify;font-size: 13px;">
+                    <li>If the child is withdrawn in between any Term (irrespective of his/her date of joining), that Term’s fee shall be
+                    charged / forfeited in favour of the school.</li>
+                    <li>Term dates 1 Term (Ist April – 30th September)
+                    2 Term(Ist October – 31st March)</li>
+                    <li>If the child is to be withdrawal in the month of March, a prior 3 Month notice is to be given in writing i.e. latest by
+                    31st December. If the notice is given after the said date, the security money of the child shall be forfeited.</li>
+                    <li>School Leaving Certificate (Transfer Certificate) will be issued only after clearance of dues and payment of amount(s)
+                    in favour of the school.</li>
+                    <li>The withdrawal form in the prescribed format should be filled only by the parent and be submitted to the admission
+                    office only. The receiving at school of the original copy of duly filled and signed withdrawal form, will be treated as
+                    final date of withdrawal.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<app-footer></app-footer>

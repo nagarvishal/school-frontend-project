@@ -1,0 +1,19 @@
+<br><br><br>
+<div class="container" style="margin: 10%;">
+    <div class="row justify-content-around">
+        <div class="col-md-5 formcontainer" >
+            <p style="color: rgba(7,30,84,.6);font-size: 16px;">Login</p>
+            <form [formGroup]="form" (ngSubmit)="submitform()" >
+                <div class="row justify-content-start">
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Email" formControlName="email">
+                    </div>
+                    <div class="col-md-12">
+                        <input type="text" placeholder="Adhar Number" formControlName="adhar_number">
+                    </div>
+                    <div><Button type="submit">Submit</Button></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

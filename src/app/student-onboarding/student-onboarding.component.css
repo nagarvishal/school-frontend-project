@@ -1,0 +1,103 @@
+
+.data-box {
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    font-style: normal;
+    padding: 20px;
+
+}
+
+.table-container {
+    overflow-x: scroll;
+    /* Enable horizontal scrolling */
+}
+
+.special-table-container {
+    overflow-x: scroll;
+    /* Enable horizontal scrolling */
+    white-space: nowrap;
+}
+
+.alert-danger {
+    color: red;
+    border: none;
+    background-color: inherit;
+    padding: 0px;
+    margin: 0px;
+    font-size: 13px;
+}
+.alert{
+    color: red;
+    border: none;
+    background-color: inherit;
+    padding: 0px;
+    margin: 0px;
+    font-size: 13px;
+}
+
+
+label {
+    margin-top: 10px;
+    font-weight: 400;
+    color: #828282;
+    font-size: 12px;
+}
+
+input,
+select,textarea {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    margin-bottom: 8px;
+    color: rgba(7, 30, 84, .6);
+    font-size: 14px;
+}
+
+
+.ibtn{
+        padding: 10px 20px;
+        background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+        border: 1px solid rgb(206, 206, 206);
+        border-radius: 5px;
+        margin-bottom: 8px;
+        color: rgba(7, 30, 84, .6);
+        font-size: 14px;
+}
+
+label.label input[type="file"] {
+    position: absolute;
+    top: -1000px;
+}
+
+label.label {
+    width: 100%;
+    color: rgba(7, 30, 84, .6);
+    padding: 10px;
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.a_subject{
+    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
+    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    color: rgba(7, 30, 84, .6);
+    padding: 10px 15px;
+    margin-top: 6px;
+    margin-right:10px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+
+}
