@@ -44,17 +44,17 @@ input,
 select,textarea {
     width: 100%;
     padding: 10px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
     border: 1px solid rgb(206, 206, 206);
     border-radius: 5px;
     margin-bottom: 8px;
     color: rgba(7, 30, 84, .6);
     font-size: 14px;
     position: relative;
+    font-weight: 500;
+    color: gray;
 }
 
-.ibtn{
+/* .ibtn{
     padding: 10px 20px;
     background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
     box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
@@ -63,12 +63,11 @@ select,textarea {
     margin-bottom: 8px;
     color: rgba(7, 30, 84, .6);
     font-size: 14px;
-}
+} */
 
 .userinfo {
     padding: 10px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
+    box-shadow: 3px 3px 6px #e2e2e2, -3px -3px 6px #fff;
     border: 1px solid rgb(206, 206, 206);
     border-radius: 5px;
     margin-bottom: 8px;
@@ -80,21 +79,45 @@ select,textarea {
 }
 
 .userinfo p{
-    font-weight: 500;
-    color: rgba(7, 30, 84, .6);
+    font-weight: 400;
+    color: gray;
 
 }
 
 th,td{
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
     border: 1px solid rgb(206, 206, 206);
     color: rgba(7, 30, 84, .6);
-    padding: 15px;
+    padding: 15px 35px;
     margin: 5px;
     width: max-content;
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 400;
+    color: gray;
+}
+
+.ibtn {
+    color: #FF9900;
+    background: transparent;
+    padding: 4px 22px;
+    border: 1px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    font-weight: 400;
+    padding: 8px 14px;
+    font-size: 14px;
+}
+button.ibtn:hover{
+    color: #fee;
+    background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
+    border: none;
+    padding: 4px 22px;
+    border: 0px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 8px 14px;
+    font-size: 14px;
 }
 
 @media(max-width : 780px){
@@ -102,8 +125,6 @@ th,td{
     select,textarea {
         width: 100%;
         padding: 8px;
-        background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
         border: 1px solid rgb(206, 206, 206);
         border-radius: 5px;
         margin-bottom: 30px;
@@ -112,15 +133,27 @@ th,td{
         position: relative;
     }
 
-    .ibtn{
-        padding: 8px 16px;
-        background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-        border: 1px solid rgb(206, 206, 206);
-        border-radius: 5px;
-        margin-bottom: 8px;
-        color: rgba(7, 30, 84, .6);
-        font-size: 12px;
+    .ibtn {
+        color: #FF9900;
+        background: transparent;
+        padding: 8px 13px;
+        border: 1px solid #FF9900;
+        border-radius: 3px;
+        position: relative;
+        font-weight: 500;
+        font-size: 13px;
+
+    }
+    button.ibtn:hover{
+        color: #fee;
+        background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
+        border: none;
+        padding: 4px 22px;
+        border: 0px solid #FF9900;
+        border-radius: 3px;
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
     }
     label {
         font-weight: 400;
@@ -136,8 +169,6 @@ th,td{
 select,textarea {
     width: 100%;
     padding: 6px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
     border: 1px solid rgb(206, 206, 206);
     border-radius: 5px;
     margin-bottom: 30px;
@@ -146,15 +177,27 @@ select,textarea {
     position: relative;
 }
 
-.ibtn{
-    padding: 6px 8px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-    border: 1px solid rgb(206, 206, 206);
-    border-radius: 5px;
-    margin-bottom: 8px;
-    color: rgba(7, 30, 84, .6);
-    font-size: 10px;
+.ibtn {
+    color: #FF9900;
+    background: transparent;
+    padding: 8px 13px;
+    border: 1px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    font-weight: 500;
+    font-size: 13px;
+
+}
+button.ibtn:hover{
+    color: #fee;
+    background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
+    border: none;
+    padding: 4px 22px;
+    border: 0px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
 }
 label {
     font-weight: 400;

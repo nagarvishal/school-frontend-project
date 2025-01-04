@@ -1,10 +1,8 @@
 
 .data-box {
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
     font-style: normal;
     padding: 20px;
-
+    border: 1px solid rgb(224, 224, 224);
 }
 
 .table-container {
@@ -41,31 +39,46 @@ label {
     font-weight: 400;
     color: #828282;
     font-size: 12px;
+    font-weight: 500;
 }
 
 input,
 select,textarea {
     width: 100%;
     padding: 10px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-    border: 1px solid rgb(206, 206, 206);
-    border-radius: 5px;
+    border: 1px solid rgb(225, 225, 225);
+    border-radius: 4px;
     margin-bottom: 8px;
-    color: rgba(7, 30, 84, .6);
+    color: gray;
     font-size: 14px;
+    font-weight: 400;
+
 }
 
 
-.ibtn{
-        padding: 10px 20px;
-        background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-        box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
-        border: 1px solid rgb(206, 206, 206);
-        border-radius: 5px;
-        margin-bottom: 8px;
-        color: rgba(7, 30, 84, .6);
-        font-size: 14px;
+.ibtn {
+    color: #FF9900;
+    background: transparent;
+    padding: 4px 22px;
+    border: 1px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    font-weight: 400;
+    padding: 8px 25px;
+    font-size: 14px;
+}
+button.ibtn:hover{
+    color: #fee;
+    background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
+    border: none;
+    padding: 4px 22px;
+    border: 0px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 8px 25px;
+    font-size: 14px;
 }
 
 label.label input[type="file"] {
@@ -75,10 +88,8 @@ label.label input[type="file"] {
 
 label.label {
     width: 100%;
-    color: rgba(7, 30, 84, .6);
+    color: gray;
     padding: 10px;
-    background: linear-gradient(to bottom right, #eff0f3, #e5e6eb);
-    box-shadow: 3px 3px 6px #bfc3cf, -3px -3px 6px #fff;
     border: 1px solid rgb(206, 206, 206);
     border-radius: 5px;
     display: inline-block;

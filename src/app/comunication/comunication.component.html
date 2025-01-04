@@ -1,0 +1,107 @@
+<app-header></app-header>
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <br>
+        <div class="data-box col-10">
+            <div class="table-container">
+                <h6 style="color: #44a;font-size: 16px;">Send Email/SMS/Whatsupp</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="form" (ngSubmit)="sendMail()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-2" style="color: gray;font-size: 14px;">
+                                <br>
+                                Email :  <input style="display: inline;width: fit-content;" type="checkbox" formControlName="for_email"><br>
+                                SMS : <input type="checkbox" style="display: inline;width: fit-content;" formControlName="for_sms">
+                                <br>
+                                Whatsupp : <input type="checkbox" style="display: inline;width: fit-content;" formControlName="for_whatsupp">
+                            </div>
+                            <div class="col-md-4 fbox">
+                                <label for="">Select Type To:</label>
+                                <label for="" style="color: white;">*</label>
+                                <select name="typeto" id="typeto" formControlName="typeto">
+                                    <option value="" disabled selected>-select-to-type--</option>
+                                    <option value="class">Class</option>
+                                    <option value="user">User(Teacher,Student,Admin)</option>
+                                    <option value="school">School</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf=" (invalid || (template.typeto?.touched)) && template.typeto?.invalid">
+                                    <div *ngIf="template.typeto?.errors.required">*Type TO Is Required</div>
+                                </div>
+                            </div>
+                            <div class="col-md-11 fbox" *ngIf="template.typeto.value=='user'?true:false" style="position: relative;">
+                                <label for="">Select User(Students/Teachers/Admins)</label>
+                                <input type="text" [(ngModel)]="cuser" (ngModelChange)="changeCUser(1)" [ngModelOptions]="{standalone: true}">
+                                <div *ngIf="cuser==''?false:true" class="email-container">
+                                    <option *ngFor="let user of arrusers;let index=index" value="{{user.email}}" (click)="optionclick(user.email,1)">{{user.email}}-{{user.first_name}} {{user.last_name}}</option>
+                                </div>
+                                <div class="optiondiv">
+                                    <div class="optionclass" value="" *ngFor="let user of template.to_users.controls;let index=index">{{user.value}} - <button (click)="removeOption(index,1)">X</button></div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 fbox" *ngIf="template.typeto.value=='class'?true:false" >
+                                <label for="">Select Class</label>
+                                <select name="" id="" formControlName="to_classes">
+                                    <option value="" selected>--select-class--</option>
+                                    <option *ngFor="let data of [1,2,3,4,5,6,7,8,9,10,11,12]" [value]="data">{{data}}-st</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf=" (invalid || (template.to_classes?.touched)) && template.to_classes?.invalid">
+                                    <div *ngIf="template.to_classes?.errors.required">*Class Is Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 fbox" style="margin-bottom: 20px;">
+                                <label *ngIf="template.subject.value?true:false">Subject</label>
+                                <label style="color:#ffffff">*</label>
+                                <input type="text" placeholder="Subject" name="subject" formControlName="subject">
+                                <div class="alert alert-danger" *ngIf=" (invalid || (template.subject?.touched)) && template.subject?.invalid">
+                                    <div *ngIf="template.subject?.errors.required">*Subject Is Required</div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-11 fbox" style="position: relative;">
+                                <label for="">CC</label>
+                                <input type="text" [(ngModel)]="ccuser" (ngModelChange)="changeCUser(2)" [ngModelOptions]="{standalone: true}">
+                                <div *ngIf="ccuser==''?false:true" class="email-container">
+                                    <option *ngFor="let user of arrusers;let index=index" value="{{user.email}}" (click)="optionclick(user.email,2)">{{user.email}}-{{user.first_name}} {{user.last_name}}</option>
+                                </div>
+                                <div class="optiondiv">
+                                    <div class="optionclass" value="" *ngFor="let user of template.cc.controls;let index=index">{{user.value}} - <button (click)="removeOption(index,2)">X</button></div>
+                                </div>
+                            </div>
+                            <div class="col-md-11 fbox" style="position: relative;">
+                                <label for="">BCC</label>
+                                <input type="text" [(ngModel)]="bccuser" (ngModelChange)="changeCUser(3)" [ngModelOptions]="{standalone: true}">
+                                <div *ngIf="bccuser==''?false:true" class="email-container">
+                                    <option *ngFor="let user of arrusers;let index=index" value="{{user.email}}" (click)="optionclick(user.email,3)">{{user.email}}-{{user.first_name}} {{user.last_name}}</option>
+                                </div>
+                                <div class="optiondiv">
+                                    <div class="optionclass" value="" *ngFor="let user of template.bcc.controls;let index=index">{{user.value}} - <button (click)="removeOption(index,3)">X</button></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-12 fbox">
+                                <div class="NgxEditor__Wrapper">
+                                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                                    <ngx-editor [editor]="editor"  [disabled]="false" [placeholder]="'Type here...'" formControlName="html"></ngx-editor>
+                                </div>
+                            </div>
+                            
+                            <div class="col-sm-12 col-md-12 fbox" style="margin-top: 20px;">
+                                <label *ngIf="template.text.value?true:false">Message(Text)</label>
+                                <label style="color:#ffffff">*</label>
+                                <textarea type="text" name="text" id="" formControlName="text" placeholder="Message (Text)" style="border: 1px solid #ececec;height: 100px;"></textarea>
+                            </div>
+                        </div>
+                        <br>
+                        <button class="ibtn" type="submit">Submit</button>
+                    </form>
+                    <p>Use varname to parameterize the template data.</p>
+                    <p>Note: All datetime values will be in UTC and user provided date parameters will have value as provided.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>

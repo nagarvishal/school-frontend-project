@@ -16,6 +16,8 @@ import { StudyMeterialComponent } from './study-meterial/study-meterial.componen
 import { TimetableComponent } from './timetable/timetable.component';
 import { AdmissionComponent } from './admission/admission.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
+import { CAssesmentComponent } from './assesment/c-assesment/c-assesment.component';
+import { TAssesmentComponent } from './assesment/t-assesment/t-assesment.component';
 
 
 const routes:Routes = [
@@ -36,6 +38,8 @@ const routes:Routes = [
   { path: 'timetable', component:TimetableComponent},
   { path: 'admission', component:AdmissionComponent},
   { path:'facilities',component:FacilitiesComponent},
+  { path:'assesment/create',component:CAssesmentComponent},
+  { path:'assesment/start',component:TAssesmentComponent},
   { path: 'tc', component: HomeComponent },
 ];
 

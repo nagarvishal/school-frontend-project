@@ -20,7 +20,7 @@ export class ExamCariculamComponent {
   cform:any;
   offset:number = 0;
   limit:number  = 5;
-  view:number = 0;
+  view:number = 1;
   arrsubjectexam:Array<any> = [];
   a_arrsubjectexam:Array<any> = [];
   c_subject:string = "";
@@ -161,7 +161,7 @@ export class ExamCariculamComponent {
   changeindex(index:number){
       this.index = index;
       this.offset = 0;
-      this.view=0;
+      this.view=1;
   }
   addSubject(){
       const url = Envirment.url+"/subject/add";

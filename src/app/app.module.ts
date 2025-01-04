@@ -37,6 +37,8 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { LoginComponent } from './login/login.component';
 import { ExamCariculamComponent } from './exam-cariculam/exam-cariculam.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { CAssesmentComponent } from './assesment/c-assesment/c-assesment.component';
+import { TAssesmentComponent } from './assesment/t-assesment/t-assesment.component';
 const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 };
 
@@ -62,7 +64,9 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     FacilitiesComponent,
     LoginComponent,
     ExamCariculamComponent,
-    SidebarComponent
+    SidebarComponent,
+    CAssesmentComponent,
+    TAssesmentComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
