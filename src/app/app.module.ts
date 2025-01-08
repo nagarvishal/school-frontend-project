@@ -11,13 +11,12 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
-import { MessageService } from 'primeng/api';
+import { Footer, MessageService } from 'primeng/api';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { AceModule } from 'ngx-ace-wrapper';
 import { ACE_CONFIG } from 'ngx-ace-wrapper';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
 import { NgxEditorModule } from 'ngx-editor';
-import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
@@ -39,13 +38,15 @@ import { ExamCariculamComponent } from './exam-cariculam/exam-cariculam.componen
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CAssesmentComponent } from './assesment/c-assesment/c-assesment.component';
 import { TAssesmentComponent } from './assesment/t-assesment/t-assesment.component';
+import { AssesmentModule } from './assesment/assesment.module';
+import { RouterModule } from '@angular/router';
+
 const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 };
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     FooterComponent,
     HomeComponent,
     ProfileComponent,
@@ -83,6 +84,8 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     MonacoEditorModule.forRoot(),
     AceModule,
     NgxEditorModule,
+    AssesmentModule,
+    RouterModule
   ],
   providers: [
     {
@@ -92,5 +95,6 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     MessageService,
   ],
   bootstrap: [AppComponent],
+  exports:[HomeComponent,FooterComponent]
 })
 export class AppModule {}

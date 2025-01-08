@@ -19,6 +19,8 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { CAssesmentComponent } from './assesment/c-assesment/c-assesment.component';
 import { TAssesmentComponent } from './assesment/t-assesment/t-assesment.component';
 
+import { CreateassesementComponent } from './assesment/createassesement/createassesement.component';
+
 
 const routes:Routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +40,7 @@ const routes:Routes = [
   { path: 'timetable', component:TimetableComponent},
   { path: 'admission', component:AdmissionComponent},
   { path:'facilities',component:FacilitiesComponent},
-  { path:'assesment/create',component:CAssesmentComponent},
+  { path:'assesment/create',component:CreateassesementComponent},
   { path:'assesment/start',component:TAssesmentComponent},
   { path: 'tc', component: HomeComponent },
 ];

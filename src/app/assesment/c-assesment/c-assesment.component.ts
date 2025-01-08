@@ -13,7 +13,7 @@ import { Envirment } from '../../../envirment/envirment.variables';
   styleUrl: './c-assesment.component.css'
 })
 export class CAssesmentComponent implements OnInit {
-[x: string]: any;
+  [x: string]: any;
   editor: Editor;
   colorPresets = ['red', '#FF0000', 'rgb(255, 0, 0)'];
   toolbar: Toolbar = [

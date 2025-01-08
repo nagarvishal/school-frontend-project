@@ -1,0 +1,217 @@
+
+<!-- <app-header></app-header> -->
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <br>
+        <div class="data-box col-11">
+            <div class="table-container">
+                <h6 style="color: #44a;font-size: 16px;">Create Assesment</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="aform" (ngSubmit)="addAssesment()">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4">
+                                <label for="" *ngIf="assesment.title.value?true:false">Assesment Title</label>
+                                <label for="" style="color: white;">*</label>
+                                <input type="text" placeholder="Assesment Title" formControlName="title">
+                                <div class="alert alert-danger" *ngIf="(invalid || (assesment.title?.touched)) && assesment.title?.invalid">
+                                    <div *ngIf="assesment.title?.errors.required">*Assesment Title Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-8">
+                                <label for="" *ngIf="assesment.description.value?true:false;">Description</label>
+                                <label for="" style="color: white;">*</label>
+                                <textarea type="text" placeholder="Description" formControlName="description"></textarea>
+                                <div class="alert alert-danger" *ngIf="(invalid || (assesment.description?.touched)) && assesment.description?.invalid">
+                                    <div *ngIf="assesment.description?.errors.required">*Assesment Description Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="" *ngIf="assesment.duration.value || assesment.duration.value==0?true:false;">Assesment Duration</label>
+                                <label for="" style="color: white;">*</label>
+                                <input type="number" placeholder="Assesment Duration" formControlName="duration">
+                                <div class="alert alert-danger" *ngIf="(invalid || (assesment.duration?.touched)) && assesment.duration?.invalid">
+                                    <div *ngIf="assesment.duration?.errors.required">*Assesment Duration Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="" *ngIf="assesment.subject_id.value?true:false">Select Subject</label>
+                                <label for="" style="color: white;">*</label>
+                                <select name="" id="" formControlName="subject_id">
+                                    <option value="" selected disabled>-Select-Subject-</option>
+                                    <option *ngFor="let subject of subjects;let index=index;"   [value]="subject.subject_id">{{subject.subject}} - {{subject.subject_id}}</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(invalid || (assesment.subject_id?.touched)) && assesment.subject_id?.invalid">
+                                    <div *ngIf="assesment.subject_id?.errors.required">*Assesment Subject Id Required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label for="" *ngIf="assesment.class.value?true:false">Select Subject</label>
+                                <label for="" style="color: white;">*</label>
+                                <select name="" id="" formControlName="class">
+                                    <option value="" selected disabled>-Select-Class-</option>
+                                    <option *ngFor="let data of [1,2,3,4,5,6,7,8,9,10,11,12];let index=index;" [value]="data">{{data}}-st</option>
+                                    
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(invalid || (assesment.class?.touched)) && assesment.class?.invalid">
+                                    <div *ngIf="assesment.class?.errors.required">*Assesment Class Id Required</div>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-sm-12 col-md-12 fbox">
+                                <div class="NgxEditor__Wrapper">
+                                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                                    <ngx-editor [editor]="editor"  [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>
+                                </div>
+                            </div> -->
+
+                            
+                        </div>
+                        <br>
+                        <button class="ibtn" type="submit">Add Assesment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <br>
+        <div class="data-box col-11">
+            <div class="table-container">
+                <h6 style="color: #44a;font-size: 16px;">Add Question To Assesments</h6>
+                <div class="form-area" d-flex>
+
+                    <form [formGroup]="aqform">
+                        <div class="row justify-content-start">
+                            <div class="col-md-12">
+                                <label for="" *ngIf="aquestion.assesment_id.value?true:false">Select Assesment</label>
+                                <label for="" style="color: white;">*</label>
+                                <select name="" id="" formControlName="assesment_id" (change)="changeAssesment()">
+                                    <option value="" selected disabled>-Select-Assesment-</option>
+                                    <option *ngFor="let ass of assesments;let index=index;" [value]="ass.assesment_id">{{ass.title}} - {{ass.assesment_id}}</option>
+                                </select>
+                                <div class="alert alert-danger" *ngIf="(invalid || (aquestion.assesment_id?.touched)) && aquestion.assesment_id?.invalid">
+                                    <div *ngIf="aquestion.assesment_id?.errors.required">*Assesment Required</div>
+                                </div>
+                            </div>
+                            <div>
+                                <br>
+                                <button class="ibtn" (click)="addQuestion()"> + Add Question To Assesment</button>
+                            </div>
+                        </div>
+                        <div [formArrayName]="'questions'">
+                            <div *ngFor="let qcontroller of aquestion.questions.controls;let index=index;" [formGroupName]="index" class="row justify-content-start q-class">
+                                <div class="col-md-12">
+                                    <label style="font-size: 15px;">Question Text - {{index+1}}</label>
+                                    <div class="NgxEditor__Wrapper">
+                                        <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                                        <ngx-editor [editor]="editor"  [disabled]="false" [placeholder]="'Type here...'" formControlName="question_text"></ngx-editor>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
+                                    <label *ngIf="qcontroller.value['question_type'] ? true:false">Question Type</label>
+                                    <label style="color: white;">*</label>
+                                    <select name="" id="" formControlName="question_type">
+                                        <option value="" selected disabled>-Select-Question-Type-</option>
+                                        <option value="mcq">Multiple Choice Questions</option>
+                                        <option value="psq">Problem-Solving Questions</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label *ngIf="qcontroller.value['marks'] || qcontroller.value['marks']==0 ? true:false">Enter Marks</label>
+                                    <label style="color: white;">*</label>
+                                    <input type="number" formControlName="marks" placeholder="Marks">
+                                </div>
+
+                                <div *ngIf="qcontroller.value['question_type'] == 'mcq' ? true:false" class="col-md-12">
+                                    <div>
+                                        <br>
+                                        <button class="ibtn" (click)="addOptionToQuestion(qcontroller)"> + Add Options To Question</button>
+                                    </div>
+                                    <div [formArrayName]="'options'" class="row">
+                                        <div *ngFor="let option of qcontroller.controls.options.controls;let i=index;" [formGroupName]="index" class="col-md-6">
+                                            <div>
+                                                <label for="">Option - {{i+1}} </label>  <i class="bi bi-trash fs-6 ibootstrap" (click)="deleteOption(i,qcontroller)"></i>
+                                                <div class="NgxEditor__Wrapper">
+                                                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+                                                    <ngx-editor [editor]="editor"  [disabled]="false" [placeholder]="'Type here...'" [formControl]="option"></ngx-editor>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label *ngIf="qcontroller.value['answer'] || qcontroller.value['answer']==0 ? true:false">Enter Answer(A,B -> Multiple Option or Enter Value)</label>
+                                    <label style="color: white;">*</label>
+                                    <input type="text" formControlName="answer" placeholder="Answer">
+
+                                </div>
+                                <div>
+                                    <br>
+                                    <button class="ibtn" (click)="deleteQuestion(index,qcontroller)">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="ibtn" type="submit" (click)="addAQuestion()">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <br>
+        <div class="data-box col-11">
+            <div class="table-container">
+                <h6 style="color: #44a;font-size: 16px;">Add Question To Assesments</h6>
+                <div class="form-area" d-flex>
+                    <div class="row justify-content-start question-sep" *ngFor="let question of storedQuestions;let index=index">
+                        <div  class="col-md-12">
+                            <div style="display: flex;">
+                                <div>Q{{index+1}}. <span style="color: white;">_</span> </div>
+                                <div [innerHTML]="question.question_text"></div>
+                            </div>
+                        </div>
+                        <div *ngIf="question.question_type=='mcq'" class="col-12">
+                            <div class="row">
+                                <div class="col-md-6" *ngFor="let option of question.options;let i = index;">
+                                    <div style="display: flex;flex-wrap: wrap;">
+                                        <div style="margin: 5px;padding: 5px;">{{abcd[i]}}.</div>
+                                        <div style="margin:5px;padding: 5px;" [innerHTML]="option"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Answer</label>
+                            <input type="text" [value]="question.answer" readonly disabled>
+                        </div>
+                        <div class="col-4">
+                            <label for="">Marks</label>
+                            <input type="number" [value]="question.marks" readonly disabled>
+                        </div>
+                        <div>
+                            <br>
+                            <button class="ibtn" (click)="deleteStoredQuestion(index)">Delete</button> <button class="ibtn" style="margin-left: 20px;">Edit</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <app-footer></app-footer> -->
