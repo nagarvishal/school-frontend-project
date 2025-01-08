@@ -162,22 +162,22 @@ export class ComunicationComponent {
 
     optionclick(email:string,value:number){
         if(value==1){
-          this.cuser = "";
-          this.arrusers=[];
-          const usersemail = this.form.get("to_users") as FormArray;
-          usersemail.push(new FormControl(email));
+            this.cuser = "";
+            this.arrusers=[];
+            const usersemail = this.form.get("to_users") as FormArray;
+            usersemail.push(new FormControl(email));
         }
         else if(value==2){
-          this.ccuser = "";
-          this.arrusers=[];
-          const usersemail = this.form.get("cc") as FormArray;
-          usersemail.push(new FormControl(email));
+            this.ccuser = "";
+            this.arrusers=[];
+            const usersemail = this.form.get("cc") as FormArray;
+            usersemail.push(new FormControl(email));
         }
         else{
-          this.bccuser = "";
-          this.arrusers=[];
-          const usersemail = this.form.get("bcc") as FormArray;
-          usersemail.push(new FormControl(email));
+            this.bccuser = "";
+            this.arrusers=[];
+            const usersemail = this.form.get("bcc") as FormArray;
+            usersemail.push(new FormControl(email));
         }
     }
 
