@@ -140,7 +140,7 @@ fetchAssesment(){
             console.log("subject fetch successfully");
         }
     }).closed;
-}
+  }
 
 addAssesment(){
     console.log(this.aform.value);

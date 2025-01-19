@@ -11,7 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Import BrowserAnimationsModule
-import { Footer, MessageService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
 import { AceModule } from 'ngx-ace-wrapper';
 import { ACE_CONFIG } from 'ngx-ace-wrapper';
@@ -36,10 +36,9 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { LoginComponent } from './login/login.component';
 import { ExamCariculamComponent } from './exam-cariculam/exam-cariculam.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { CAssesmentComponent } from './assesment/c-assesment/c-assesment.component';
-import { TAssesmentComponent } from './assesment/t-assesment/t-assesment.component';
 import { AssesmentModule } from './assesment/assesment.module';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
 
 const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 };
@@ -66,8 +65,7 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     LoginComponent,
     ExamCariculamComponent,
     SidebarComponent,
-    CAssesmentComponent,
-    TAssesmentComponent
+    HeaderComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -95,6 +93,6 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     MessageService,
   ],
   bootstrap: [AppComponent],
-  exports:[HomeComponent,FooterComponent]
+  exports:[]
 })
 export class AppModule {}

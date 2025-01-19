@@ -1,1 +1,42 @@
-<p>takeassesment works!</p>
+<br><br>
+<div class="container">
+    <div class="row justify-content-center">
+        <br>
+        <div class="data-box col-11">
+            <div class="table-container">
+                <h6 style="color: #44a;font-size: 16px;">Select Assesment</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="form">
+                        <div class="row justify-content-start">
+                            <div class="col-md-4">
+                                <label>Select Assesement</label>
+                                <select name="" id="" formControlName="class">
+                                    <option value="" selected disabled>-Select-Class-</option>
+                                    <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12];let index=index" [value]="index">{{i}}-st</option>
+                                </select>
+                                
+                            </div>
+                            <div class="col-md-4">
+                                <label>Select Subject</label>
+                                <select name="" id="" (change)="changeSubject()" formControlName="subject_id">
+                                    <option value="" selected disabled>-Select-Subject-</option>
+                                    <option *ngFor="let s of subjects;let index=index;" [value]="s.subject_id">{{s.subject}} - {{s.subject_id}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label>Select Assesement</label>
+                                <select name="" id="" formControlName="assesment_id">
+                                    <option value="" selected disabled>-Select-Assesment-</option>
+                                    <option *ngFor="let assesment of assesments;let i = index;" [value]="assesment.assesment_id">{{assesment.title}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <button (click)="startAssesment()" *ngIf="formvalue?.class?.value && formvalue?.subject_id?.value && formvalue?.assesment_id?.value" type="submit" class="ibtn" >Start Assesment</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

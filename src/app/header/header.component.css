@@ -34,6 +34,14 @@
     text-decoration: none;
     font-size: 1rem;
   }
+
+  input{
+    color: gray;
+    border: 1px solid gray;
+    padding: 4px;
+    border-radius: 5px;
+    width: 100%;
+  }
   
   /* Shrinking header on smaller screens */
   @media (max-width: 768px) {

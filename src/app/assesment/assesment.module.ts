@@ -7,12 +7,14 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
 import { AppModule } from '../app.module';
+import { StartAssesmentComponent } from './start-assesment/start-assesment.component';
 
 
 @NgModule({
     declarations:[
         CreateassesementComponent,
-        TakeassesmentComponent
+        TakeassesmentComponent,
+        StartAssesmentComponent
     ],
     imports:[
         CommonModule,

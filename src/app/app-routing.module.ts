@@ -16,10 +16,10 @@ import { StudyMeterialComponent } from './study-meterial/study-meterial.componen
 import { TimetableComponent } from './timetable/timetable.component';
 import { AdmissionComponent } from './admission/admission.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
-import { CAssesmentComponent } from './assesment/c-assesment/c-assesment.component';
-import { TAssesmentComponent } from './assesment/t-assesment/t-assesment.component';
 
 import { CreateassesementComponent } from './assesment/createassesement/createassesement.component';
+import { TakeassesmentComponent } from './assesment/takeassesment/takeassesment.component';
+import { StartAssesmentComponent } from './assesment/start-assesment/start-assesment.component';
 
 
 const routes:Routes = [
@@ -41,8 +41,9 @@ const routes:Routes = [
   { path: 'admission', component:AdmissionComponent},
   { path:'facilities',component:FacilitiesComponent},
   { path:'assesment/create',component:CreateassesementComponent},
-  { path:'assesment/start',component:TAssesmentComponent},
-  { path: 'tc', component: HomeComponent },
+  { path:'assesment/take',component:TakeassesmentComponent},
+  { path:'assesment/start',component:StartAssesmentComponent},
+  { path: 'tc', component: HomeComponent }
 ];
 
 @NgModule({
