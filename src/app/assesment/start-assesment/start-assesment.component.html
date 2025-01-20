@@ -1,1 +1,89 @@
-<p>start-assesment works!</p>
+<br>
+<div class="container-fluid" style="width: 95%;">
+    <div class="row">
+        <div class="col-8">
+            <div>
+                <h4>Assesment Title : {{assesment.title}}</h4>
+            </div>
+        </div>
+        <div class="col-3">
+            <div>
+                <h5>Duration : {{assesment.duration}}</h5>
+            </div>
+        </div>
+        <div class="col-3">
+            <div>
+                <h5>Max Marks : {{4}}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid" style="width: 95%;">
+    <div class="row justify-content-center">
+        <br><br><br>
+        <div class="data-box col-12" style="padding: 10px;">
+            <div class="table-container">
+                <div class="form-area" d-flex>
+                    <div class="row justify-content-between">
+                        <div class="col-9">
+                            <div class="question-body" style="display: flex;">
+                                <div>Q{{cquestion_index+1}}. <span style="color: white;">_</span> </div>
+                                <div [innerHTML]="cquestion.question_text"></div>
+                            </div>
+                            <div *ngIf="cquestion.question_type=='mcq'" class="col-12">
+                                <div class="row">
+                                    <div class="col-md-6" *ngFor="let option of cquestion.options;let i = index;" style="width: 100%;padding-left: 0px;" (click)="clickOption(abcd[i])" [ngClass]="{
+                                        optionclicked_body:checkOptionClicked(abcd[i])
+                                    }">
+                                        <div style="display: flex;flex-wrap: wrap;">
+                                            <div [ngClass]="{
+                                                optionclicked_abcd:checkOptionClicked(abcd[i]),
+                                                optionnormal:!checkOptionClicked(abcd[i]),
+
+                                            }">{{abcd[i]}}.</div>
+                                            <div  [innerHTML]="option" [ngClass]="{
+                                                optionnormal:true
+                                            }"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div *ngIf="cquestion.question_type=='psq'" class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+
+                                        <input type="text" placeholder="Enter Answer" [(ngModel)]="answers[cquestion.question_id][0]">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex;justify-content: space-between;flex-wrap: wrap;">
+                                <div>
+                                    <button class="ibtn">Previous</button>
+                                </div>
+                                <div>
+                                    <button class="ibtn">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <h6>Timer</h6>
+                            <p class="timerclassp">{{hours/10>=1?hours:"0"+hours}}-{{minutes/10>=1?minutes:"0"+minutes}}-{{seconds/10>=1?seconds:"0"+seconds}} HH:MM:SS</p>
+                            <h6 style="color: #44a;font-size: 16px;">Question Navigator</h6>
+                            <div class="index_container">
+                                <div *ngFor="let status of qstatus;let index=index;" [ngClass]="{
+                                    index_box:true,
+                                    activeclass :   status==0 ? true : false,
+                                    visitedaclass : status==1   ? true:false,
+                                    answerclass :   status==2   ? true:false,
+                                }" (click)="clickedQuestion(index)">{{index+1}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="ibtn" (click)="submitAssesment()">Submit Assesment</button>
+        </div>
+    </div>
+</div>
+

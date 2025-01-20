@@ -105,7 +105,7 @@ fetchsubjectexam(){
           }
       }).closed;
   }
-  changeClassSubject(){
+    changeClassSubject() {
       if(this.cclass && this.csubject_id){
           this.cexam_id="";
           this.fetchsubjectexam();

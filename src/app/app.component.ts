@@ -11,13 +11,13 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'clientside';
-  // config: { [key: string]: any } = {
-  //   useWrapMode: true,
-  //   fontSize: 13,
-  // };
+    title = 'clientside';
+    // config: { [key: string]: any } = {
+    //   useWrapMode: true,
+    //   fontSize: 13,
+    // };
 
-  // value = `function greet(name) {
-  //   return 'Hello, ' + name + '!';
-  // }`;
+    // value = `function greet(name) {
+    //   return 'Hello, ' + name + '!';
+    // }`;
 }
