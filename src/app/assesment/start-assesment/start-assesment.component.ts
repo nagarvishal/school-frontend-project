@@ -201,7 +201,7 @@ export class StartAssesmentComponent implements OnInit {
                 console.log("process has been competed");
             }
         })
-
+        
     }
 
     ngOnInit(): void {

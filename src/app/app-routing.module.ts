@@ -20,6 +20,7 @@ import { FacilitiesComponent } from './facilities/facilities.component';
 import { CreateassesementComponent } from './assesment/createassesement/createassesement.component';
 import { TakeassesmentComponent } from './assesment/takeassesment/takeassesment.component';
 import { StartAssesmentComponent } from './assesment/start-assesment/start-assesment.component';
+import { ReviewAssesmentComponent } from './assesment/review-assesment/review-assesment.component';
 
 
 const routes:Routes = [
@@ -43,6 +44,7 @@ const routes:Routes = [
   { path:'assesment/create',component:CreateassesementComponent},
   { path:'assesment/take',component:TakeassesmentComponent},
   { path:'assesment/start',component:StartAssesmentComponent},
+  { path:'assesment/review',component:ReviewAssesmentComponent},
   { path: 'tc', component: HomeComponent }
 ];
 

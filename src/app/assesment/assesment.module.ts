@@ -8,13 +8,16 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NgxEditorModule } from 'ngx-editor';
 import { AppModule } from '../app.module';
 import { StartAssesmentComponent } from './start-assesment/start-assesment.component';
+import { ReviewAssesmentComponent } from './review-assesment/review-assesment.component';
+import { AssServiceService } from './ass-service.service';
 
 
 @NgModule({
     declarations:[
         CreateassesementComponent,
         TakeassesmentComponent,
-        StartAssesmentComponent
+        StartAssesmentComponent,
+        ReviewAssesmentComponent
     ],
     imports:[
         CommonModule,
@@ -23,7 +26,7 @@ import { StartAssesmentComponent } from './start-assesment/start-assesment.compo
         NgxEditorModule,
         BrowserModule
     ],
-    providers:[],
+    providers:[AssServiceService],
     exports:[
         CreateassesementComponent,
         TakeassesmentComponent
