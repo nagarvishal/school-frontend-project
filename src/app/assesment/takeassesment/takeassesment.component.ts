@@ -48,7 +48,7 @@ export class TakeassesmentComponent {
     }
 
     fetchAssesment(){
-      const url = Envirment.url + "/assesment/fetch";
+      const url = Envirment.url + `/assesment/fetch?subject_id=${this.form.value["subject_id"]}&class=${this.form.value["class"]}`;
       const headers = this.service.defaultHeader();
       this.service.getAPICall(url,headers).subscribe({
           next:(response:any)=>{
@@ -68,8 +68,10 @@ export class TakeassesmentComponent {
     }
     startAssesment(){
       const assesment_id = this.form.value["assesment_id"];
+      const classes = this.form.value["class"];
+      const subject_id = this.form.value["subject_id"];
       if(assesment_id){
-        this.router.navigate(["assesment/start"],{queryParams:{assesment_id:assesment_id}});
+        this.router.navigate(["assesment/start"],{queryParams:{assesment_id:assesment_id,class:classes,subject_id:subject_id}});
       }
     }
 

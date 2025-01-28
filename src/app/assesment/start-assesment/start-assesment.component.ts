@@ -29,11 +29,16 @@ export class StartAssesmentComponent implements OnInit {
     time: number = 0;
     interval:any;
     abcd:any = ['A','B','C','D','E','F'];
+    class:string;
+    subject_id:string;
 
-
+    submitResponse(){
+        
+    }
     startTimer() {
         this.interval = setInterval(() => {
         if(this.hours==0 && this.minutes==0 && this.seconds==0){
+            this.submitAssesment();
             this.pauseTimer();
         }
         else if(this.minutes==0 && this.seconds==0){
@@ -156,6 +161,15 @@ export class StartAssesmentComponent implements OnInit {
             this.qstatus[this.cquestion_index] = 0;
         }
     }
+    changeInput(){
+        if(this.answers[this.cquestion.question_id][0]){
+            this.qstatus[this.cquestion_index] = 2;
+        }
+        else{
+            this.qstatus[this.cquestion_index] = 0;
+        }
+
+    }
     checkOptionClicked(option:string):boolean{
         if(this.answers[this.cquestion.question_id].includes(option)){
             return true;
@@ -166,15 +180,37 @@ export class StartAssesmentComponent implements OnInit {
     }
 
     submitAssesment() {
-        console.log(this.answers);
-        
+        const user_id = sessionStorage.getItem("user_id");
+        const url = Envirment.url+"/assesment/answer/submit";
+        const headers = this.service.defaultHeader();
+        const reqbody = {
+            assesment_id : this.assesment_id,
+            class : this.class,
+            subject_id : this.subject_id,
+            answers : this.answers,
+            user_id : sessionStorage.getItem("user_id"),
+        }
+        this.service.postAPICall(url,reqbody,headers).subscribe({
+            next:(response)=>{
+                console.log(response);
+            },
+            error:(e)=>{
+                console.log(e);
+            },
+            complete:()=>{
+                console.log("process has been competed");
+            }
+        })
+
     }
 
     ngOnInit(): void {
-            this.route.queryParamMap.subscribe((value)=>{
-                this.assesment_id = value.get("assesment_id");
-                this.fetchAssesmentQuestions();
-                this.fetchAssesment();
-            })
+        this.route.queryParamMap.subscribe((value)=>{
+            this.assesment_id = value.get("assesment_id");
+            this.class = value.get("class");
+            this.subject_id = value.get("subject_id");
+            this.fetchAssesmentQuestions();
+            this.fetchAssesment();
+        })
     }
 }

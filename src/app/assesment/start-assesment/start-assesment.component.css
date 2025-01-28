@@ -1,9 +1,12 @@
+*{
+    color: gray;
+}
 .col-md-11 {
     background: #ffffff;
 }
 
 h4,h5{
-    color: #264a9f;
+    color: gray;
     margin-bottom: 20px;
     font-weight: 600;
     font-size: 18px;
@@ -127,7 +130,7 @@ button {
 }
 .email-container option:hover{
     background-color: white;
-    color: #264a9f;
+    color: gray;
 }
 
 .optiondiv{
@@ -151,7 +154,7 @@ button {
     background-color: white;
     border: none;
     border:1px solid rgb(167, 167, 167);
-    color: #264a9f;
+    color: gray;
 }
 
 .fbox{
@@ -243,7 +246,7 @@ i.ibootstrap{
 
 .timerclassp{
     font-size: 20px;
-    color: #264a9f;
+    color: gray;
     font-weight: bold;
     border: 1px solid gray;
     padding: 10px;
