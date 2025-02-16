@@ -8,14 +8,10 @@ import { CommonserviceService } from '../../_services/commonservice.service';
   styleUrl: './review-assesment.component.css'
 })
 export class ReviewAssesmentComponent {
-
+  name:string = "vihsal nagar";
   assesments:any = [];
   studentAssesment:any = [];
   constructor(private aservice:AssServiceService,private service:CommonserviceService){
-    // fetchassesment();
-    // fetchAnswers();
-    aservice.fetchAssesment(this);
-    aservice.fetchAttempedAssesments(this);
 
   }
 }
