@@ -6,6 +6,7 @@ import { CommonserviceService } from '../_services/commonservice.service';
 export class AssServiceService {
 
     constructor(private service: CommonserviceService) { }
+
     async generateQuery(filter:object={}){
         let str = "";
         let index = 0;
@@ -19,21 +20,27 @@ export class AssServiceService {
         }
         return str;
     }
-    async generalGetApiCall(thiss: any, url: string, filter: object = {}, variable_name: string) {
+
+    async generalGetApiCall(thiss: any, url: string, filter: object = {}, variable_name: string="") {
         const apiurl = Envirment.url + url + await this.generateQuery(filter);
         const headers = this.service.defaultHeader();
+        console.log(apiurl);
+        console.log(headers);
         this.service.getAPICall(apiurl,headers).subscribe({
             next : (response:any)=>{
+                console.log(variable_name);
                 thiss[variable_name] = response.data;
             },
             error:(e)=>{
+                
                 console.log("Error Comes from backend",e);
             },
             complete:()=>{
                 console.log("process had been completed");
             }
-        }).unsubscribe();
+        })
     }
+
     async generalPostApiCall(thiss:any, url:string, reqbody:object = {}, filter:object = {}, variable_name: string=""){
         const apiurl = Envirment.url + url + await this.generateQuery(filter);
         const headers = this.service.defaultHeader();
@@ -52,4 +59,6 @@ export class AssServiceService {
             }
         }).unsubscribe();
     }
+
+
 }

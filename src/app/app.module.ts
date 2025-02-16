@@ -17,7 +17,6 @@ import { AceModule } from 'ngx-ace-wrapper';
 import { ACE_CONFIG } from 'ngx-ace-wrapper';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
 import { NgxEditorModule } from 'ngx-editor';
-import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StudentOnboardingComponent } from './student-onboarding/student-onboarding.component';
@@ -35,10 +34,10 @@ import { LatestUpdateComponent } from './latest-update/latest-update.component';
 import { FacilitiesComponent } from './facilities/facilities.component';
 import { LoginComponent } from './login/login.component';
 import { ExamCariculamComponent } from './exam-cariculam/exam-cariculam.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { AssesmentModule } from './assesment/assesment.module';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
+
+import { TemplateModule } from './templates/templates.module';
 
 const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 };
@@ -46,7 +45,6 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    FooterComponent,
     HomeComponent,
     ProfileComponent,
     StudentOnboardingComponent,
@@ -63,9 +61,7 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     LatestUpdateComponent,
     FacilitiesComponent,
     LoginComponent,
-    ExamCariculamComponent,
-    SidebarComponent,
-    HeaderComponent
+    ExamCariculamComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   imports: [
@@ -83,7 +79,8 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     AceModule,
     NgxEditorModule,
     AssesmentModule,
-    RouterModule
+    RouterModule,
+    TemplateModule
   ],
   providers: [
     {

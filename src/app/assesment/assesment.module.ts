@@ -10,6 +10,7 @@ import { AppModule } from '../app.module';
 import { StartAssesmentComponent } from './start-assesment/start-assesment.component';
 import { ReviewAssesmentComponent } from './review-assesment/review-assesment.component';
 import { AssServiceService } from './ass-service.service';
+import { TemplateModule } from '../templates/templates.module';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AssServiceService } from './ass-service.service';
         FormsModule,
         ReactiveFormsModule,
         NgxEditorModule,
-        BrowserModule
+        BrowserModule,
+        TemplateModule
     ],
     providers:[AssServiceService],
     exports:[

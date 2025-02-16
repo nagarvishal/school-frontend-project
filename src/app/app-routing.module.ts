@@ -24,32 +24,32 @@ import { ReviewAssesmentComponent } from './assesment/review-assesment/review-as
 
 
 const routes:Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component:LoginComponent},
-  { path: 'about', component: AboutComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'facuilties', component: FacuiltyComponent },
-  { path: 'exam-cariculam',component:ExamCariculamComponent},
-  { path: 'student-onboarding', component: StudentOnboardingComponent },
-  { path: 'teacher-onboarding', component: TeacherOnboardingComponent },
-  { path: 'profile',component:ProfileComponent},
-  { path: 'marks',component:MarksComponent},
-  { path: 'attendance',component:AttendanceComponent},
-  { path: 'communication',component:ComunicationComponent},
-  { path: 'studay-material',component:StudyMeterialComponent},
-  { path: 'home', component: HomeComponent },
-  { path: 'timetable', component:TimetableComponent},
-  { path: 'admission', component:AdmissionComponent},
-  { path:'facilities',component:FacilitiesComponent},
-  { path:'assesment/create',component:CreateassesementComponent},
-  { path:'assesment/take',component:TakeassesmentComponent},
-  { path:'assesment/start',component:StartAssesmentComponent},
-  { path:'assesment/review',component:ReviewAssesmentComponent},
-  { path: 'tc', component: HomeComponent }
+    { path: '', component: HomeComponent },
+    { path: 'login', component:LoginComponent},
+    { path: 'about', component: AboutComponent },
+    { path: 'contact', component: ContactComponent },
+    { path: 'facuilties', component: FacuiltyComponent },
+    { path: 'exam-cariculam',component:ExamCariculamComponent},
+    { path: 'student-onboarding', component: StudentOnboardingComponent },
+    { path: 'teacher-onboarding', component: TeacherOnboardingComponent },
+    { path: 'profile',component:ProfileComponent},
+    { path: 'marks',component:MarksComponent},
+    { path: 'attendance',component:AttendanceComponent},
+    { path: 'communication',component:ComunicationComponent},
+    { path: 'studay-material',component:StudyMeterialComponent},
+    { path: 'home', component: HomeComponent },
+    { path: 'timetable', component:TimetableComponent},
+    { path: 'admission', component:AdmissionComponent},
+    { path:'facilities',component:FacilitiesComponent},
+    { path:'assesment/create',component:CreateassesementComponent},
+    { path:'assesment/take',component:TakeassesmentComponent},
+    { path:'assesment/start',component:StartAssesmentComponent},
+    { path:'assesment/review',component:ReviewAssesmentComponent},
+    { path: 'tc', component: HomeComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }
