@@ -1,4 +1,26 @@
 <app-headers></app-headers>
 <app-sidebars></app-sidebars>
 
+<div class="container" style="    max-width: 100%;" *ngIf="cassesment == -1?true:false">
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <br><br>
+            <p class="p-heading">All Attended Assesments</p>
+            <div class="box-container">
+                <div class="boxcontent" *ngFor="let assesment of studentAssesment;let index=index;">
+                    <div (click)="clickOnAssesment(index)">
+                        <p class="p-body"><span>Title - </span>{{findAssesment(assesment.assesment_id).title}}</p>
+                        <p class="p-body"><span>Class - </span> {{assesment.class}}</p>
+                        <p class="p-body"><span>Makrs - </span> {{assesment.marks}}</p>
+                        <p class="p-body">Description - {{findAssesment(assesment.assesment_id).description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="cassesment == -1 ?false:true;">
+    <div>{{assesmentQA|json}}</div>
+</div>
+
 <app-footers></app-footers>
