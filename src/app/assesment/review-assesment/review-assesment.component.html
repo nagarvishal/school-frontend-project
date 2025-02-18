@@ -19,8 +19,41 @@
         </div>
     </div>
 </div>
-<div *ngIf="cassesment == -1 ?false:true;">
-    <div>{{assesmentQA|json}}</div>
+<div *ngIf="cassesment == -1 ?false:true;" class="container">
+    <div class="row justify-content-center">
+        <div class="col-11">
+            <p class="p-heading">{{findAssesment(studentAssesment[cassesment].assesment_id).title}}</p>
+            <div *ngFor="let question of assesmentQA;let index=index;" class="sepclass">
+                <div [innerHTML]="question.question_text" class="question-body"> </div>
+                <div *ngIf="question.question_type == 'mcq'">
+                    <div *ngFor="let option of question.options;let i=index;">
+                        <div style="display: flex;">
+                            <div style="margin-right: 10px;">{{abcd[i]}}.</div>
+                            <div [innerHTML]="option" class="answer-body"></div>
+                            <div style="margin-left:20px;" *ngIf="(checkisright(question.question_id,abcd[i],question.answer) == 1) ? true:false"> <img src="../../../assets/images/check-button.png" alt=""> , <img src="../../../assets/images/check-button.png" alt=""></div>
+                            <div style="margin-left:20px;" *ngIf="(checkisright(question.question_id,abcd[i],question.answer) == 2) ? true:false"><img src="../../../assets/images/check-button.png" alt=""> , <img src="../../../assets/images/cross.png" alt=""></div>
+                            <div style="margin-left:20px;" *ngIf="(checkisright(question.question_id,abcd[i],question.answer) == 3) ? true:false"><img src="../../../assets/images/cross.png" alt=""> , <img src="../../../assets/images/check-button.png" alt=""></div>
+                            <div style="margin-left:20px;" *ngIf="(checkisright(question.question_id,abcd[i],question.answer) == 4) ? true:false"><img src="../../../assets/images/cross.png" alt=""> ,<img src="../../../assets/images/cross.png" alt=""></div>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="question.question_type == 'psq'">
+                    <div style="display: flex;">
+                        <div>
+                            <input type="text" readonly [(ngModel)]="studentAssesment[cassesment]['answers'][question.question_id][0]">
+                        </div>
+                        <div *ngIf="checkrightanswer(question.question_id,question.answer)">
+                            <img src="../../../assets/images/check-button.png" alt="">
+                        </div>
+                        <div *ngIf="!checkrightanswer(question.question_id,question.answer)" >
+                            <img src="../../../assets/images/cross.png" alt="">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <app-footers></app-footers>

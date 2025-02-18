@@ -24,10 +24,32 @@
 
 .p-body{
     color: gray;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 12px;
     text-align: left;
     margin-bottom: 0.5rem;
+}
+
+.sepclass{
+    border: 1px solid rgb(229, 229, 229);
+    margin: 10px;
+    padding: 20px;
+    border-radius: 4px;
+}
+img{
+    width: 25px;
+    height:25px;
+}
+
+.question-body{
+    color: gray;
+    font-weight: 500;
+    font-size: 14px;
+}
+.answer-body{
+    color:gray;
+    font-weight: 400;
+    font-size: 14px;
 }
 
 
