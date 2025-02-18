@@ -6,6 +6,8 @@ import { FootersComponent } from './footers/footers.component';
 import { SidebarsComponent } from './sidebars/sidebars.component';
 import { Router, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { FacilitiesComponent } from './facilities/facilities.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { HomeComponent } from './home/home.component';
     HeadersComponent,
     FootersComponent,
     SidebarsComponent,
-    HomeComponent
+    HomeComponent,
+    AboutComponent,
+    FacilitiesComponent
   ],
     imports:[
         CommonModule,
@@ -27,7 +31,9 @@ import { HomeComponent } from './home/home.component';
         HeadersComponent,
         FootersComponent,
         SidebarsComponent,
-        HomeComponent
+        HomeComponent,
+        AboutComponent,
+        FacilitiesComponent
     ]
 })
 export class TemplateModule{}

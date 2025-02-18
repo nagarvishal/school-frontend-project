@@ -25,12 +25,10 @@ import { AttendanceComponent } from './attendance/attendance.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { StudyMeterialComponent } from './study-meterial/study-meterial.component';
 import { ComunicationComponent } from './comunication/comunication.component';
-import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FacuiltyComponent } from './facuilty/facuilty.component';
 import { AdmissionComponent } from './admission/admission.component';
 import { LatestUpdateComponent } from './latest-update/latest-update.component';
-import { FacilitiesComponent } from './facilities/facilities.component';
 import { LoginComponent } from './login/login.component';
 import { ExamCariculamComponent } from './exam-cariculam/exam-cariculam.component';
 import { AssesmentModule } from './assesment/assesment.module';
@@ -52,12 +50,10 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
     TimetableComponent,
     StudyMeterialComponent,
     ComunicationComponent,
-    AboutComponent,
     ContactComponent,
     FacuiltyComponent,
     AdmissionComponent,
     LatestUpdateComponent,
-    FacilitiesComponent,
     LoginComponent,
     ExamCariculamComponent
   ],

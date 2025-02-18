@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './templates/home/home.component';
 import { LoginComponent } from './login/login.component';
-import { AboutComponent } from './about/about.component';
+import { AboutComponent } from './templates/about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { FacuiltyComponent } from './facuilty/facuilty.component';
 import { ExamCariculamComponent } from './exam-cariculam/exam-cariculam.component';
@@ -15,7 +15,7 @@ import { ComunicationComponent } from './comunication/comunication.component';
 import { StudyMeterialComponent } from './study-meterial/study-meterial.component';
 import { TimetableComponent } from './timetable/timetable.component';
 import { AdmissionComponent } from './admission/admission.component';
-import { FacilitiesComponent } from './facilities/facilities.component';
+import { FacilitiesComponent } from './templates/facilities/facilities.component';
 
 import { CreateassesementComponent } from './assesment/createassesement/createassesement.component';
 import { TakeassesmentComponent } from './assesment/takeassesment/takeassesment.component';
