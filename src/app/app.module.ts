@@ -17,7 +17,6 @@ import { AceModule } from 'ngx-ace-wrapper';
 import { ACE_CONFIG } from 'ngx-ace-wrapper';
 import { AceConfigInterface } from 'ngx-ace-wrapper';
 import { NgxEditorModule } from 'ngx-editor';
-import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { StudentOnboardingComponent } from './student-onboarding/student-onboarding.component';
 import { TeacherOnboardingComponent } from './teacher-onboarding/teacher-onboarding.component';
@@ -45,7 +44,6 @@ const DEFAULT_ACE_CONFIG: AceConfigInterface = {
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ProfileComponent,
     StudentOnboardingComponent,
     TeacherOnboardingComponent,
