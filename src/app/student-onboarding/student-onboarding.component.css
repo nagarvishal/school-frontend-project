@@ -67,6 +67,16 @@ select,textarea {
     padding: 8px 25px;
     font-size: 14px;
 }
+.ibtn_2{
+    color: #FF9900;
+    background: transparent;
+    border: 1px solid #FF9900;
+    border-radius: 3px;
+    position: relative;
+    font-weight: 400;
+    padding: 3px 12px;
+    font-size: 14px;
+}
 button.ibtn:hover{
     color: #fee;
     background: linear-gradient(45deg, #ffc632 0%, #ff8302 100%);
@@ -86,10 +96,22 @@ label.label input[type="file"] {
     top: -1000px;
 }
 
+
 label.label {
     width: 100%;
     color: gray;
     padding: 10px;
+    border: 1px solid rgb(206, 206, 206);
+    border-radius: 5px;
+    display: inline-block;
+    box-sizing: border-box;
+    cursor: pointer;
+    margin-top: 5px;
+}
+div.label{
+    width: 100%;
+    color: gray;
+    padding: 7px;
     border: 1px solid rgb(206, 206, 206);
     border-radius: 5px;
     display: inline-block;

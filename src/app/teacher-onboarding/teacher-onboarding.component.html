@@ -1,5 +1,27 @@
 <app-headers></app-headers>
 <app-sidebars></app-sidebars>
+
+<br>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Edith Teachers Details</h6>
+                <div class="form-area" d-flex>
+                    <div class="row justify-content-start">
+                        <div class="col-12 col-sm-6 col-md-6 " style="margin-bottom: 20px;">
+                            <label>Select Teacher</label>
+                            <select #element (change)="changeTeacher(element)">
+                                <option value="" selected disabled>-Select-Student-</option>
+                                <option *ngFor="let teacher of teachers;let index=index;" [value]="teacher.user_id">[{{teacher.user_id}}]-[{{teacher.first_name}} {{teacher.last_name}}]-[{{teacher.email}}]</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <br>
 <div class="container" *ngIf="step==0">
     <div class="row justify-content-center">
@@ -7,7 +29,7 @@
             <div class="table-container">
                 <h6 style="color: #264a9f;font-size: 16px;">Add Teacher Details</h6>
                 <div class="form-area" d-flex>
-                    <form [formGroup]="form" (ngSubmit)="addTeacher()">
+                    <form [formGroup]="is_edith?form1:form" (ngSubmit)="addTeacher()">
                         <div class="row justify-content-start">
                             <div class="col-md-3" style="margin-bottom: 20px;">
                                 <label *ngIf="teacher.first_name.value?true:false">First Name</label>
@@ -144,7 +166,7 @@
                             <div class="col-md-3" style="margin-bottom: 20px;">
                                 <label>Status</label>
                                 <br>
-                                <select formControlName="gender">
+                                <select formControlName="status">
                                     <option value=0 [selected]="true">Active</option>
                                     <option value=1>Disable</option>
                                 </select>
@@ -208,7 +230,7 @@
                                 <label>Adhar Card</label>
                                 <!-- <label style="color:#ffffff">*</label> -->
                                 <label class="label">
-                                    <input type="file" placeholder="Adhar Card" name="adhar_card" (change)="onChangeFile($event,span1)"/>
+                                    <input type="file" placeholder="Adhar Card" name="adhar_card" (change)="onChangeFile($event,span1,'adhar')"/>
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span1>Choose File</span> - Upload Adhar Card</span>
                                     <script></script>
                                 </label>
@@ -216,28 +238,28 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Pan Card</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Pan Card" name="pan_card" (change)="onChangeFile($event,span2)">
+                                    <input type="file" placeholder="Pan Card" name="pan_card" (change)="onChangeFile($event,span2,'pan')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span2>Choose File</span> - Upload Pan Card</span>
                                 </label>
                             </div>
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Bachelor's Degree</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Bachelor's Degree" name="bachelor_degree" (change)="onChangeFile($event,span3)">
+                                    <input type="file" placeholder="Bachelor's Degree" name="bachelor_degree" (change)="onChangeFile($event,span3,'bachelor_degree')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span3>Choose File</span> -Upload Bachelor's Degree </span>
                                 </label>
                             </div>
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Resume/CV</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Resume/CV" name="resume" (change)="onChangeFile($event,span4)">
+                                    <input type="file" placeholder="Resume/CV" name="resume" (change)="onChangeFile($event,span4,'resume')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span4>Choose File</span> -Upload Resume/CV </span>
                                 </label>
                             </div>
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Photocopy</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Photocopy" name="photocopy" (change)="onChangeFile($event,span5)">
+                                    <input type="file" placeholder="Photocopy" name="photocopy" (change)="onChangeFile($event,span5,'photocopy')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span5>Choose File</span> -Upload Photocopy
                                     </span>
                                 </label>
@@ -245,7 +267,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Birth Certificate</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Birth Certificate" name="birth_certificate" (change)="onChangeFile($event,span6)">
+                                    <input type="file" placeholder="Birth Certificate" name="birth_certificate" (change)="onChangeFile($event,span6,'birth_certificate')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span6>Choose File</span> -Upload Birth Certificate
                                     </span>
                                 </label>
@@ -253,7 +275,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Police Clearance Certificate</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Police Clearance Certificate" name="pcc" (change)="onChangeFile($event,span7)">
+                                    <input type="file" placeholder="Police Clearance Certificate" name="pcc" (change)="onChangeFile($event,span7,'pcc')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span7>Choose File</span> -Upload Police Clearance Certificate
                                     </span>
                                 </label>
@@ -261,7 +283,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Bank Statements Copy</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Bank Statements Copy" name="btc" (change)="onChangeFile($event,span8)">
+                                    <input type="file" placeholder="Bank Statements Copy" name="btc" (change)="onChangeFile($event,span8,'bank_statement')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span8>Choose File</span> -Upload Bank Statements Copy
                                     </span>
                                 </label>
@@ -276,6 +298,77 @@
                         <br>
                         <p></p>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container" *ngIf="is_edith==true">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Download Student Documents</h6>
+                <div class="form-area" d-flex>
+                    <div class="row justify-content-start">
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Adhar Card</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('adhar')">
+                                    <button class="ibtn_2">Download</button> - Download Adhar Card
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Pan Card</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('pan')">
+                                    <button class="ibtn_2">Download</button> - Download Pan Card
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Resume/CV</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('resume')">
+                                    <button class="ibtn_2">Download</button> - Download Resume/CV
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Photocopy</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('photocopy')">
+                                    <button class="ibtn_2">Download</button> - Download Photocopy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Birth Certificate</label>
+                            <div class="label">
+                                <div style="font-size: 13px;"  (click)="downloadFile('birth_certificate')">
+                                    <button class="ibtn_2">Download</button> - Download Birth Certificate
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Police Clearance Certificate</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('pcc')">
+                                    <button class="ibtn_2">Download</button> - Download Police Clearance Certificate
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Bank Statement</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('bank_statement')">
+                                    <button class="ibtn_2">Download</button> - Download Bank Statement Copy
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

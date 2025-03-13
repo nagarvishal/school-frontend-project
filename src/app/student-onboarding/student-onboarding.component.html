@@ -5,9 +5,38 @@
     <div class="row justify-content-center">
         <div class="data-box col-12">
             <div class="table-container">
-                <h6 style="color: #264a9f;font-size: 16px;">Add Student Details</h6>
+                <h6 style="color: #264a9f;font-size: 16px;">Edith Student Details</h6>
                 <div class="form-area" d-flex>
-                    <form [formGroup]="form" (ngSubmit)="addStudent()">
+                    <div class="row justify-content-start">
+                        <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                            <label>Select Class</label>
+                            <select [(ngModel)]="class" (change)="changeclass()">
+                                <option value="" selected disabled>-Select-Class-</option>
+                                <option *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12];let index=index" value={{i}}>{{i}}st</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 " style="margin-bottom: 20px;">
+                            <label>Select Student</label>
+                            <select #element (change)="changestudent(element)">
+                                <option value="" select disabled>-Select-Student-</option>
+                                <option *ngFor="let student of students;let index=index;" [value]="student.user_id">[{{student.user_id}}]-[{{student.first_name}} {{student.last_name}}]-[{{student.email}}]</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container" *ngIf="step==0">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 *ngIf="is_edith==false" style="color: #264a9f;font-size: 16px;">Add Student Details</h6>
+                <h6 *ngIf="is_edith==true" style="color: #264a9f;font-size: 16px;">Edith Student Details</h6>
+                <div class="form-area" d-flex>
+                    <form [formGroup]="is_edith == false ? form : form1" (ngSubmit)="addStudent()">
                         <div class="row justify-content-start">
                             <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
                                 <label *ngIf="student.first_name.value?true:false">First Name</label>
@@ -28,7 +57,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-6 col-sm-4 col-md-3 " style="margin-bottom: 20px;">
+                            <div class="col-6 col-sm-4 col-md-3" style="margin-bottom: 20px;">
                                 <label *ngIf="student.email.value?true:false">Email</label>
                                 <label style="color:#ffffff">*</label>
                                 <input type="text" placeholder="Email" name="email" formControlName="email">
@@ -159,9 +188,9 @@
                                 <label>Select Stream</label>
                                 <br>
                                 <select formControlName="stream">
-                                    <option  value="science">Science</option>
-                                    <option  value="arts">Arts</option>
-                                    <option  value="commers">Commers</option>
+                                    <option  value="Science">Science</option>
+                                    <option  value="Arts">Arts</option>
+                                    <option  value="Commers">Commers</option>
                                 </select>
                                 <div class="alert alert-danger" *ngIf="(student.stream?.touched || is_clicked )&& student.stream?.invalid">
                                     <div *ngIf="student.stream?.errors.required">*Stream Is Required</div>
@@ -233,7 +262,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Adhar Card</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Adhar Card" name="adhar_card" (change)="onChangeFile($event,span1)" />
+                                    <input type="file" placeholder="Adhar Card" name="adhar_card" (change)="onChangeFile($event,span1,'adhar')" />
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span1>Choose File</span> - Upload Adhar
                                         Card</span>
                                     <script></script>
@@ -242,7 +271,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Pan Card</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Pan Card" name="pan_card" (change)="onChangeFile($event,span2)">
+                                    <input type="file" placeholder="Pan Card" name="pan_card" (change)="onChangeFile($event,span2,'pan')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span2>Choose File</span> - Upload Pan
                                         Card</span>
                                 </label>
@@ -250,14 +279,14 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Transfer Certificate</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Transfer Certificate" name="pan_card" (change)="onChangeFile($event,span3)">
+                                    <input type="file" placeholder="Transfer Certificate" name="pan_card" (change)="onChangeFile($event,span3,'transfer_certificate')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span3>Choose File</span> - Upload Transfer Certificate</span>
                                 </label>
                             </div>
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Upload Photocopy</label>
                             <label class="label">
-                                <input type="file" placeholder="Photocopy" name="photocopy" (change)="onChangeFile($event,span4)">
+                                <input type="file" placeholder="Photocopy" name="photocopy" (change)="onChangeFile($event,span4,'photocopy')">
                                 <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span4>Choose File</span> -Upload
                                     Photocopy
                                 </span>
@@ -266,7 +295,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Birth Certificate</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Birth Certificate" name="birth_certificate" (change)="onChangeFile($event,span5)">
+                                    <input type="file" placeholder="Birth Certificate" name="birth_certificate" (change)="onChangeFile($event,span5,'birth_certificate')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span5>Choose File</span> -Upload Birth
                                         Certificate
                                     </span>
@@ -275,7 +304,7 @@
                             <div class="col-md-4" style="margin-bottom: 20px;">
                                 <label>Last Year Marksheet/ Report Card</label>
                                 <label class="label">
-                                    <input type="file" placeholder="Marksheet/ Report Card" name="marksheet" (change)="onChangeFile($event,span6)">
+                                    <input type="file" placeholder="Marksheet/ Report Card" name="marksheet" (change)="onChangeFile($event,span6,'marksheet')">
                                     <span><span style="border: 1px solid gray;padding: 5px;border-radius: 3px;" #span6>Choose File</span> -Upload Marksheet/ Report Card
                                     </span>
                                 </label>
@@ -293,5 +322,70 @@
         </div>
     </div>
 </div>
+
 <br>
+<div class="container" *ngIf="is_edith==true">
+    <div class="row justify-content-center">
+        <div class="data-box col-12">
+            <div class="table-container">
+                <h6 style="color: #264a9f;font-size: 16px;">Download Student Documents</h6>
+                <div class="form-area" d-flex>
+                    <div class="row justify-content-start">
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Adhar Card</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('adhar')">
+                                    <button class="ibtn_2">Download</button> - Download Adhar Card
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Pan Card</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('pan')">
+                                    <button class="ibtn_2">Download</button> - Download Pan Card
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Transfer Certificate</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('transfer_certificate')">
+                                    <button class="ibtn_2">Download</button> - Download Transfer Certificate
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Photocopy</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('photocopy')">
+                                    <button class="ibtn_2">Download</button> - Download Photocopy
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Birth Certificate</label>
+                            <div class="label">
+                                <div style="font-size: 13px;"  (click)="downloadFile('birth_certificate')">
+                                    <button class="ibtn_2">Download</button> - Download Birth Certificate
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" style="margin-bottom: 20px;">
+                            <label>Download Marksheet</label>
+                            <div class="label">
+                                <div style="font-size: 13px;" (click)="downloadFile('marksheet')">
+                                    <button class="ibtn_2">Download</button> - Download Marksheet
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
 <app-footers></app-footers>
